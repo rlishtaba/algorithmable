@@ -5,6 +5,8 @@ require 'pathname'
 require 'English'
 
 module Algorithmable
+  autoload :Sort, 'algorithmable/sort'
+
   class << self
     def logger
       @logger ||= Logger.new $stdout
