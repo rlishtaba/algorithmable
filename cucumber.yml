@@ -1,0 +1,7 @@
+<%
+defaults = ['--require', 'features/support', '--require', 'features/step_definitions', 'features'].join(' ')
+%>
+
+ruby_1_9: <%= defaults %>
+ruby_2_0: <%= defaults %>
+default: <%= defaults %>
