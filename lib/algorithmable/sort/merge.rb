@@ -2,7 +2,7 @@ module Algorithmable
   module Sort
     class Merge
       def self.sort(*items)
-        new.sort *items
+        new.sort(*items)
       end
 
       def sort(*items)
@@ -17,7 +17,7 @@ module Algorithmable
 
       def merge(left, right)
         sorted = []
-        until left.empty? or right.empty?
+        until left.empty? || right.empty?
           left.first <= right.first ? sorted << left.shift : sorted << right.shift
         end
         sorted + left + right

@@ -4,7 +4,7 @@ module Algorithmable
 
     class << self
       def merge(*items)
-        Merge.sort *items
+        Merge.sort(*items)
       end
     end
   end
