@@ -1,29 +1,29 @@
 module Algorithmable
   module Sort
     class Bubble
-      def self.sort(*items)
-        new.sort(*items)
+      def self.sort(collection)
+        new.sort(collection)
       end
 
-      def sort(*items)
+      def sort(collection)
         loop do
           swapped = false
-          (items.size.pred).times do |index|
-            if (items[index] <=> items[index.next]) == 1
-              items = swap(index, *items)
+          (collection.size.pred).times do |index|
+            if (collection[index] <=> collection[index.next]) == 1
+              collection = swap(index, collection)
               swapped = true
             end
           end
           break unless swapped
         end
-        items
+        collection
       end
 
       private
 
-      def swap(index, *items)
-        items[index], items[index.next] = items[index.next], items[index]
-        items
+      def swap(index, collection)
+        collection[index], collection[index.next] = collection[index.next], collection[index]
+        collection
       end
     end
   end

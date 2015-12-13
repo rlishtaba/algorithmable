@@ -1,16 +1,16 @@
 module Algorithmable
   module Sort
     class Merge
-      def self.sort(*items)
-        new.sort(*items)
+      def self.sort(collection)
+        new.sort(collection)
       end
 
-      def sort(*items)
-        return items if items.size <= 1
-        mid = items.size / 2
-        left = items[0...mid]
-        right = items[mid...items.size]
-        merge(sort(*left), sort(*right))
+      def sort(collection)
+        return collection if collection.size <= 1
+        mid = collection.size / 2
+        left = collection[0...mid]
+        right = collection[mid...collection.size]
+        merge(sort(left), sort(right))
       end
 
       private

@@ -4,12 +4,12 @@ module Algorithmable
     autoload :Bubble, 'algorithmable/sort/bubble'
 
     class << self
-      def merge(*items)
-        Merge.sort(*items)
+      def merge(collection)
+        Merge.sort(collection)
       end
 
-      def bubble(*items)
-        Bubble.sort(*items)
+      def bubble(collection)
+        Bubble.sort(collection)
       end
     end
   end
