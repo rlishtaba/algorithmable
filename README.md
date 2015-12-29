@@ -2,7 +2,7 @@
 
 # Algorithmable
 
-Useful algorithms for everyday usage implemented using Ruby.
+Useful algorithms such as Sorting, Searches, Graph Traversal strategies & data structures such as Symbol Tables, BST, Hash Tables, Bag, Linked List, Queue, Stack, Graphs for everyday usage. Implemented using Ruby, for fun.
 
 ## Installation
 
