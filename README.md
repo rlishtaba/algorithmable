@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/rlishtaba/algorithmable.svg?branch=master)](https://travis-ci.org/rlishtaba/algorithmable)
+
 # Algorithmable
 
 Useful algorithms for everyday usage implemented using Ruby.
