@@ -22,7 +22,9 @@ module Algorithmable
       private
 
       def swap(index, collection)
-        collection[index], collection[index.next] = collection[index.next], collection[index]
+        current = collection[index]
+        collection[index] = collection[index.next]
+        collection[index.next] = current
         collection
       end
     end

@@ -6,6 +6,7 @@ require 'English'
 
 module Algorithmable
   autoload :Sort, 'algorithmable/sort'
+  autoload :Graphs, 'algorithmable/graphs'
 
   class << self
     def logger
