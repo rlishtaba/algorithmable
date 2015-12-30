@@ -21,6 +21,27 @@ module Algorithmable
       def adjacency(vertex)
         @adj[vertex]
       end
+
+      def valid_vertex?(vertex)
+        !(0 > vertex || vertex >= @vertices)
+      end
+
+      def degree(vertex)
+        raise "Vertex #{vertex} is not valid." unless valid_vertex?(vertex)
+        adjacency(vertex).size
+      end
+
+      def to_s
+        data = ''
+        @vertices.times do |vertex|
+          data += "( #{vertex} => "
+          @adj[vertex].each do |neighbor|
+            data += "#{neighbor} "
+          end
+          data += ') '
+        end
+        "#<#{self.class} @vertices=#{@vertices} @edges=#{@edges} @data=#{data}>"
+      end
     end
   end
 end

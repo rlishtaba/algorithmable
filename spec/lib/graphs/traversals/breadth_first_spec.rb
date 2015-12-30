@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Algorithmable::Graphs::Traversals::DepthFirst do
+describe Algorithmable::Graphs::Traversals::BreadthFirst do
   context '#traversal' do
     let(:graph) do
       vertices = yaml_fixture('graphs/undirected/simple.yml')['vertices']
@@ -18,7 +18,7 @@ describe Algorithmable::Graphs::Traversals::DepthFirst do
     end
 
     it do
-      expect(traversal.path_to(3)).to eq([3, 4, 5, 0])
+      expect(traversal.path_to(3)).to eq([3, 5, 0])
     end
 
     it do
@@ -30,7 +30,7 @@ describe Algorithmable::Graphs::Traversals::DepthFirst do
     end
 
     it do
-      expect(traversal.path_to(6)).to eq([6, 4, 5, 0])
+      expect(traversal.path_to(6)).to eq([6, 0])
     end
   end
 end
