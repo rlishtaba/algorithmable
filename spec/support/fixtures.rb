@@ -1,4 +1,5 @@
 require 'pathname'
+require 'yaml'
 
 module Support
   module Fixtures
@@ -20,6 +21,10 @@ module Support
 
     def fixtures_path
       Pathname(absolute_fixture_path '')
+    end
+
+    def yaml_fixture(name)
+      YAML.load binary_fixture(name)
     end
   end
 end
