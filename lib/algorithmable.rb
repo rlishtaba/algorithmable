@@ -6,6 +6,7 @@ require 'English'
 
 module Algorithmable
   autoload :Sort, 'algorithmable/sort'
+  autoload :DataStructs, 'algorithmable/data_structs'
   autoload :Graphs, 'algorithmable/graphs'
 
   class << self
