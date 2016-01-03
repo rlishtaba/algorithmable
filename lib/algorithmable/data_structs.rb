@@ -1,5 +1,6 @@
 module Algorithmable
   module DataStructs
+    autoload :Deque, 'algorithmable/data_structs/deque'
     autoload :Bag, 'algorithmable/data_structs/bag'
     autoload :LinkedList, 'algorithmable/data_structs/linked_list'
     autoload :Queue, 'algorithmable/data_structs/queue'

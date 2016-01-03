@@ -2,6 +2,7 @@ module Algorithmable
   module Sort
     autoload :Merge, 'algorithmable/sort/merge'
     autoload :Bubble, 'algorithmable/sort/bubble'
+    autoload :BinaryHeap, 'algorithmable/sort/binary_heap'
 
     class << self
       def merge(collection)
