@@ -2,7 +2,7 @@ require 'monitor'
 
 module Algorithmable
   module DataStructs
-    class Queue
+    class Stack
       include Enumerable
       include MonitorMixin
       attr_reader :size
@@ -12,7 +12,6 @@ module Algorithmable
 
       def initialize
         @first = nil
-        @last = nil
         @size = 0
         super
       end
@@ -28,24 +27,21 @@ module Algorithmable
         end
       end
 
-      def enqueue(item)
+      def push(item)
         synchronize do
-          old_last = @last
-          @last = Node.new item
-          @last.succ = nil
-          @first = @last if empty?
-          old_last.succ = @last unless empty?
+          old_first = @first
+          @first = Node.new item
+          @first.succ = old_first
           @size = @size.next
         end
       end
 
-      def dequeue
+      def pop
         synchronize do
           fail NoSuchElementError if empty?
           item = @first.item
           @first = @first.succ
           @size = @size.pred
-          @last = nil if empty?
           item
         end
       end

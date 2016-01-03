@@ -40,7 +40,7 @@ describe Algorithmable::DataStructs::Queue do
 
     it do
       items.each { |item| queue.enqueue item }
-      expect(queue.to_s).to eq('3:2:1')
+      expect(queue.to_s).to eq(items.join(described_class::SEPARATOR))
     end
   end
 end

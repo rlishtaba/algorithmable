@@ -7,7 +7,7 @@ describe Algorithmable::DataStructs::LinkedList do
     end
 
     it do
-      expect(@list).to be_kind_of(described_class::Impl)
+      expect(@list).to be_kind_of(described_class)
     end
 
     it do
