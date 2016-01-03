@@ -5,6 +5,7 @@ require 'pathname'
 require 'English'
 
 module Algorithmable
+  autoload :Errors, 'algorithmable/errors'
   autoload :Sort, 'algorithmable/sort'
   autoload :DataStructs, 'algorithmable/data_structs'
   autoload :Graphs, 'algorithmable/graphs'

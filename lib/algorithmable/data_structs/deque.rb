@@ -2,9 +2,9 @@ module Algorithmable
   module DataStructs
     class Deque
       include Enumerable
+      include Algorithmable::Errors
 
       Node = Struct.new(:prev, :next, :item)
-      NoSuchElementError = Class.new(RuntimeError)
 
       attr_reader :size
       alias_method :length, :size
