@@ -8,6 +8,7 @@ module Algorithmable
   autoload :Sort, 'algorithmable/sort'
   autoload :DataStructs, 'algorithmable/data_structs'
   autoload :Graphs, 'algorithmable/graphs'
+  autoload :Puzzles, 'algorithmable/puzzles'
 
   class << self
     def logger
