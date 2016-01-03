@@ -29,7 +29,7 @@ describe Algorithmable::DataStructs::Bag do
 
     it do
       [3, 2, 1].each { |item| bag.add item }
-      yielded = bag.collect { |i| i.item }
+      yielded = bag.collect(&:item)
       expect(yielded).to eq([3, 2, 1].reverse)
     end
   end

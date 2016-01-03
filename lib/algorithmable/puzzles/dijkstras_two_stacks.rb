@@ -25,7 +25,7 @@ module Algorithmable
       def parse_expression(operations, values)
         @expression.split.each do |char|
           if OPEN_EXP == char
-            #noop
+            # noop
           elsif OPS.include?(char)
             operations.push char
           elsif CLOSE_EXP == char

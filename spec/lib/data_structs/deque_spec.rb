@@ -48,7 +48,6 @@ describe Algorithmable::DataStructs::Deque do
   end
 
   context '#when testing Deque as FIFO' do
-
     it 'can push back to deque' do
       container.push_back 1
       container.push_back 2

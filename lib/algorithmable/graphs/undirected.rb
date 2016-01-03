@@ -27,7 +27,7 @@ module Algorithmable
       end
 
       def degree(vertex)
-        raise "Vertex #{vertex} is not valid." unless valid_vertex?(vertex)
+        fail "Vertex #{vertex} is not valid." unless valid_vertex?(vertex)
         adjacency(vertex).size
       end
 

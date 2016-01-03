@@ -63,7 +63,7 @@ module Algorithmable
       def pop_front
         fail NoSuchElementError unless @front
         node = @front
-        if 1  == @size
+        if 1 == @size
           clear
           return node.item
         else
