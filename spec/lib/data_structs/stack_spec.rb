@@ -25,11 +25,11 @@ describe Algorithmable::DataStructs::Stack do
     end
 
     it do
-      expect { stack.peek }.to raise_error(Algorithmable::DataStructs::Stack::NoSuchElementError)
+      expect { stack.peek }.to raise_error(Algorithmable::Errors::NoSuchElementError)
     end
 
     it do
-      expect { stack.pop }.to raise_error(Algorithmable::DataStructs::Stack::NoSuchElementError)
+      expect { stack.pop }.to raise_error(Algorithmable::Errors::NoSuchElementError)
     end
 
     it do
@@ -40,7 +40,8 @@ describe Algorithmable::DataStructs::Stack do
 
     it do
       items.each { |item| stack.push item }
-      expect(stack.to_s).to eq(items.reverse.join(described_class::SEPARATOR))
+      string = stack.map(&:to_s).join(':')
+      expect(string).to eq(items.reverse.join(':'))
     end
   end
 end

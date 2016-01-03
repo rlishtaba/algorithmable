@@ -1,79 +1,29 @@
-require 'monitor'
-
 module Algorithmable
   module DataStructs
     class Stack
+      include Algorithmable::Errors
       include Enumerable
-      include MonitorMixin
-      attr_reader :size
+      extend Forwardable
 
-      SEPARATOR = ':'
-      NoSuchElementError = Class.new(RuntimeError)
+      def_delegators :@imp, :empty?, :size, :each
 
-      def initialize
-        @first = nil
-        @size = 0
-        super
-      end
-
-      def empty?
-        !@size.nonzero?
+      def initialize(collection = [])
+        @imp = Deque.new
+        collection.each { |item| @imp.push_front item }
       end
 
       def peek
-        synchronize do
-          fail NoSuchElementError if empty?
-          @first.item
-        end
+        peek_value = @imp.peek_front
+        fail NoSuchElementError unless peek_value
+        peek_value
       end
 
       def push(item)
-        synchronize do
-          old_first = @first
-          @first = Node.new item
-          @first.succ = old_first
-          @size = @size.next
-        end
+        @imp.push_front(item)
       end
 
       def pop
-        synchronize do
-          fail NoSuchElementError if empty?
-          item = @first.item
-          @first = @first.succ
-          @size = @size.pred
-          item
-        end
-      end
-
-      def to_s
-        synchronize do
-          to_a.join SEPARATOR
-        end
-      end
-
-      def each(&block)
-        synchronize do
-          (@first || []).each(&block)
-        end
-      end
-
-      class Node
-        attr_accessor :succ, :item
-
-        def initialize(item)
-          @item = item
-          @succ = nil
-        end
-
-        def to_s
-          @item.to_s
-        end
-
-        def each(&block)
-          yield self
-          @succ.each(&block) if @succ
-        end
+        @imp.pop_front
       end
     end
   end

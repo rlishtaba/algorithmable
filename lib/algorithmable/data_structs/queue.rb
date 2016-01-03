@@ -3,17 +3,12 @@ module Algorithmable
     class Queue
       include Algorithmable::Errors
       include Enumerable
+      extend Forwardable
+
+      def_delegators :@imp, :empty?, :size, :each
 
       def initialize(collection = [])
         @imp = Deque.new collection
-      end
-
-      def size
-        @imp.size
-      end
-
-      def empty?
-        @imp.empty?
       end
 
       def peek
@@ -28,10 +23,6 @@ module Algorithmable
 
       def dequeue
         @imp.pop_front
-      end
-
-      def each(&block)
-        @imp.each(&block)
       end
     end
   end

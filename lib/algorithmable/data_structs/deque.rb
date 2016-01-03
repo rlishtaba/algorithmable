@@ -5,9 +5,7 @@ module Algorithmable
       include Algorithmable::Errors
 
       Node = Struct.new(:prev, :next, :item)
-
       attr_reader :size
-      alias_method :length, :size
 
       def initialize(collection = [])
         @front = nil
@@ -90,6 +88,7 @@ module Algorithmable
         node.item
       end
 
+      # represent fifo iterator
       def each
         return unless @front
         node = @front
@@ -99,6 +98,7 @@ module Algorithmable
         end
       end
 
+      # represent lifo iterator
       def reverse_each
         return unless @back
         node = @back
