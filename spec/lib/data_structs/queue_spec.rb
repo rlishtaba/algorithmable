@@ -25,11 +25,11 @@ describe Algorithmable::DataStructs::Queue do
     end
 
     it do
-      expect { queue.peek }.to raise_error(Algorithmable::DataStructs::Queue::NoSuchElementError)
+      expect { queue.peek }.to raise_error(Algorithmable::Errors::NoSuchElementError)
     end
 
     it do
-      expect { queue.dequeue }.to raise_error(Algorithmable::DataStructs::Queue::NoSuchElementError)
+      expect { queue.dequeue }.to raise_error(Algorithmable::Errors::NoSuchElementError)
     end
 
     it do
@@ -40,7 +40,8 @@ describe Algorithmable::DataStructs::Queue do
 
     it do
       items.each { |item| queue.enqueue item }
-      expect(queue.to_s).to eq('3:2:1')
+      string = queue.map(&:to_s).join(':')
+      expect(string).to eq(items.join(':'))
     end
   end
 end

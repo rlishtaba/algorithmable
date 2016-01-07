@@ -1,6 +1,6 @@
 module Algorithmable
   module DataStructs
-    class Queue
+    class Stack
       include Algorithmable::Errors
       include Enumerable
       extend Forwardable
@@ -8,7 +8,8 @@ module Algorithmable
       def_delegators :@imp, :empty?, :size, :each
 
       def initialize(collection = [])
-        @imp = Deque.new collection
+        @imp = Deque.new
+        collection.each { |item| @imp.push_front item }
       end
 
       def peek
@@ -17,11 +18,11 @@ module Algorithmable
         peek_value
       end
 
-      def enqueue(item)
-        @imp.push_back(item)
+      def push(item)
+        @imp.push_front(item)
       end
 
-      def dequeue
+      def pop
         @imp.pop_front
       end
     end

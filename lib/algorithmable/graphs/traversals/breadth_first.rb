@@ -38,11 +38,10 @@ module Algorithmable
           until queue.empty?
             next_vertex = queue.deq
             graph.adjacency(next_vertex).each do |neighbour_vertex|
-              unless visited? neighbour_vertex
-                @edge_to[neighbour_vertex] = next_vertex
-                @visited[neighbour_vertex] = true
-                queue.enq neighbour_vertex
-              end
+              next if visited? neighbour_vertex
+              @edge_to[neighbour_vertex] = next_vertex
+              @visited[neighbour_vertex] = true
+              queue.enq neighbour_vertex
             end
           end
         end

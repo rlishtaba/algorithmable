@@ -24,8 +24,6 @@ module Algorithmable
         @head.each(&block) if @head
       end
 
-      private
-
       class Node
         attr_accessor :succ, :item
 
