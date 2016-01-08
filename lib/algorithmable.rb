@@ -7,6 +7,7 @@ require 'English'
 module Algorithmable
   autoload :Errors, 'algorithmable/errors'
   autoload :Sort, 'algorithmable/sort'
+  autoload :Search, 'algorithmable/search'
   autoload :DataStructs, 'algorithmable/data_structs'
   autoload :Graphs, 'algorithmable/graphs'
   autoload :Puzzles, 'algorithmable/puzzles'
