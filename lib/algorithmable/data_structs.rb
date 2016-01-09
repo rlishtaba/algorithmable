@@ -5,6 +5,7 @@ module Algorithmable
     autoload :LinkedList, 'algorithmable/data_structs/linked_list'
     autoload :Queue, 'algorithmable/data_structs/queue'
     autoload :Stack, 'algorithmable/data_structs/stack'
+    autoload :OrderedSymbolTable, 'algorithmable/data_structs/ordered_symbol_table'
 
     def new_bag
       Bag.new
@@ -20,6 +21,10 @@ module Algorithmable
 
     def new_lifo_queue
       Stack.new
+    end
+
+    def new_ordered_symbol_table(key_type, value_type)
+      OrderedSymbolTable.new(key_type, value_type)
     end
   end
 end

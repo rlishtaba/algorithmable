@@ -2,7 +2,45 @@
 
 # Algorithmable
 
-Useful algorithms such as Sorting, Searches, Graph Traversal strategies & data structures such as Symbol Tables, BST, Hash Tables, Bag, Linked List, Queue, Stack, Graphs for everyday usage. Implemented using Ruby, for fun.
+Useful algorithms such as Sorting Strategies, Searches and Data Structures such as symbol tables, binary search tree BST, red black tree RBT, 
+hash tables, bag, linked list, deque, queue FIFO, stack LIFO, graphs & Graph Traversal strategies for everyday usage. 
+
+Algorithms and Data Structures implemented using Ruby, for fun.
+
+Library also contains solutions for several puzzles solved by implemented algorithms and data structures.
+
+## Data Structures
+
+- Bag (primitive collection without ability to delete elements)
+- Doubly Linked List
+- Deque (double-ended queue)
+- Queue (FIFO)
+- Stack (LIFO)
+- Ordered Symbol Table BST. Implementation using Unbalanced Binary Search Tree.
+
+## Graphs
+
+- Undirected graph
+
+## Graph Traversals
+
+- Breadth First Search (BFS)
+- Death First Search (DFS)
+
+## Search Algorithms
+
+- Binary Search
+
+## Sorting Algorithms
+
+- Bubble sort
+- Merge sort
+- Heapsort ( Binary Heap )
+
+# Usage
+
+It is always better to check unit tests in order to understand how things going on. 
+Most of the components are encapsulated through the factory methods, so the are could be mixed to other objects.
 
 ## Installation
 
@@ -19,8 +57,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install algorithmable
-
-## Usage
 
 ## Contributing
 
