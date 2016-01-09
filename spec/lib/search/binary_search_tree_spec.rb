@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Algorithmable::DataStructs::OrderedSymbolTable do
+describe Algorithmable::Searches::BinarySearchTree do
   let(:input) { %w(n y e c a q p b k t s v w f z j g r u m o i h l x).freeze }
   let(:tree) do
     new_tree = described_class.new(String, Numeric)
@@ -42,6 +42,11 @@ describe Algorithmable::DataStructs::OrderedSymbolTable do
     end
 
     it do
+      expected_key = input.sort[4]
+      expect(tree.select(4)).to eq(expected_key)
+    end
+
+    it do
       key = 'f'
       expected_index = input.sort.index(key)
       expect(tree.rank(key)).to eq(expected_index)
@@ -54,6 +59,15 @@ describe Algorithmable::DataStructs::OrderedSymbolTable do
   end
 
   context '#mutable' do
+    it do
+      tree.delete_max
+      expect(tree.max).to eq('y')
+    end
+
+    it do
+      tree.delete_min
+      expect(tree.min).to eq('b')
+    end
 
     it do
       tree.delete('k')

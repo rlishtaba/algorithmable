@@ -1,6 +1,6 @@
 module Algorithmable
-  module Search
-    class Binary
+  module Searches
+    class BinarySearch
       def self.lookup(element, in_collection)
         new.lookup(element, in_collection)
       end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Algorithmable::Search::Binary do
+describe Algorithmable::Searches::BinarySearch do
   context '# when searching chars' do
     let(:alphabet) { ('a'..'z').to_a.freeze }
 
