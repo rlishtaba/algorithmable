@@ -1,3 +1,3 @@
 module Algorithmable
-  VERSION = '0.9.0.pre1'
+  VERSION = '0.9.0'
 end
