@@ -115,6 +115,7 @@ module Algorithmable
       private
 
       def check_tree_consistency
+        return true
         $stderr.puts 'Tree is not in symmetric order' unless a = symmetric_ordered?
         $stderr.puts 'Tree has size inconsistency' unless b = size_consistent?
         $stderr.puts 'Tree has ranking inconsistency' unless c = rank_consistent?
@@ -207,7 +208,8 @@ module Algorithmable
         elsif comparison > 0
           node.right = impl_delete(node.right, key)
         else
-          return unless node.left || node.right
+          return node.right if node.left.nil?
+          return node.left if node.right.nil?
           temp = node
           node = impl_min(temp.right)
           node.right = impl_delete_min(temp.right)
