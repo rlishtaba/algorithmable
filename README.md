@@ -25,7 +25,7 @@ Library also contains solutions for several puzzles solved by implemented algori
 ## Graph Traversals
 
 - Breadth First Search (BFS)
-- Death First Search (DFS)
+- Depth First Search (DFS)
 
 ## Search Algorithms
 
