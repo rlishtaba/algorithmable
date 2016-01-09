@@ -33,30 +33,32 @@ module Algorithmable
         assert_key_type(key)
         delete key
         @root = impl_put(@root, key, value)
-        check_tree
+        check_tree_consistency
       end
 
       def delete_min
         @root = impl_delete_min @root
-        check_tree
+        check_tree_consistency
       end
 
       def delete_max
         @root = impl_delete_max @root
-        check_tree
+        check_tree_consistency
       end
 
       def delete(key)
         assert_key_type(key)
         @root = impl_delete(@root, key)
-        check_tree
+        check_tree_consistency
       end
 
       def min
+        return if empty?
         impl_min(@root).key
       end
 
       def max
+        return if empty?
         impl_max(@root).key
       end
 
@@ -88,10 +90,62 @@ module Algorithmable
         impl_rank @root, key
       end
 
+      def size_consistent?
+        impl_size_consistent?(@root)
+      end
+
+      def rank_consistent?
+        size.times do |time|
+          break false unless time != rank(select(time))
+        end
+        keys.each do |key|
+          comparison = key <=> select(rank(key))
+          break false if comparison != 0
+        end
+        true
+      end
+
+      def symmetric_ordered?
+        impl_symmetric_ordered? @root
+      end
+
+      def keys(low = min, high = max)
+        queue = Algorithmable::DataStructs::Queue.new
+        impl_keys @root, queue, low, high
+        queue
+      end
+
       private
 
-      def check_tree
-        true
+      def check_tree_consistency
+        $stderr.puts 'Tree is not in symmetric order' unless a = symmetric_ordered?
+        $stderr.puts 'Tree has size inconsistency' unless b = size_consistent?
+        $stderr.puts 'Tree has ranking inconsistency' unless c = rank_consistent?
+        a && b && c
+      end
+
+      def impl_symmetric_ordered?(node, min_key = nil, max_key = nil)
+        return true unless node
+        return false if !min_key.nil? && (node.key <=> min_key) <= 0
+        return false if !max_key.nil? && (node.key <=> max_key) >= 0
+        impl_symmetric_ordered?(node.left, min_key, node.key) && impl_symmetric_ordered?(node.right, node.key, max_key)
+      end
+
+      def impl_keys(node, queue, low, high)
+        return unless node
+        cmp_low = low <=> node.key
+        cmp_high = high <=> node.key
+        impl_keys(node.left, queue, low, high) if cmp_low < 0
+        if cmp_low <= 0 && cmp_high >= 0
+          queue.enqueue node.key
+        end
+        impl_keys(node.right, queue, low, high) if cmp_high > 0
+      end
+
+      def impl_size_consistent?(node)
+        return true unless node
+        return false if (node.size != node_size(node.left) + node_size(node.right) + 1)
+        impl_size_consistent?(node.left) && impl_size_consistent?(node.right)
       end
 
       def assert_value_type(value)

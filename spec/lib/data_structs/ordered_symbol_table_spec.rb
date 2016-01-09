@@ -51,6 +51,11 @@ describe Algorithmable::DataStructs::OrderedSymbolTable do
       expected_index = input.sort.index(key)
       expect(tree.rank(key)).to eq(expected_index)
     end
+
+    it do
+      keys = tree.keys
+      expect(keys.to_a).to eq(input.sort)
+    end
   end
 
   context '#mutable' do

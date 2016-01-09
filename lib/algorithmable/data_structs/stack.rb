@@ -2,10 +2,9 @@ module Algorithmable
   module DataStructs
     class Stack
       include Algorithmable::Errors
-      include Enumerable
       extend Forwardable
 
-      def_delegators :@imp, :empty?, :size, :each
+      def_delegators :@imp, :empty?, :size, :each, :map, :to_a
 
       def initialize(collection = [])
         @imp = Deque.new

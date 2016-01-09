@@ -1,7 +1,6 @@
 module Algorithmable
   module DataStructs
     class Deque
-      include Enumerable
       include Algorithmable::Errors
 
       Node = Struct.new(:prev, :next, :item)
@@ -89,23 +88,37 @@ module Algorithmable
       end
 
       # represent fifo iterator
-      def each
-        return unless @front
-        node = @front
-        while node
-          yield node.item
-          node = node.next
-        end
+      def each(&block)
+        collect_items(:forward).each(&block)
       end
 
       # represent lifo iterator
-      def reverse_each
-        return unless @back
-        node = @back
-        while node
-          yield node.item
-          node = node.prev
+      def reverse_each(&block)
+        collect_items(:backward).each(&block)
+      end
+
+      def to_a
+        each.to_a
+      end
+
+      def map(&block)
+        each.map(&block)
+      end
+
+      private
+
+      def collect_items(order)
+        variable = order == :backward ? @back : @front
+        action = order == :backward ? :prev : :next
+        items = []
+        if variable
+          node = variable
+          while node
+            items << node.item
+            node = node.public_send action
+          end
         end
+        items
       end
     end
   end
