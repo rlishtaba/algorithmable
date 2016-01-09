@@ -6,15 +6,17 @@ module Algorithmable
       end
 
       def lookup(element, collection)
+        return if element.nil?
         traverse element, collection, 0, collection.length - 1
       end
 
       def traverse(element, collection, low, high)
         while low <= high
           mid = low + (high - low) / 2
-          if element < collection[mid]
+          value_at = collection[mid]
+          if element < value_at
             high = mid.pred
-          elsif element > collection[mid]
+          elsif element > value_at
             low = mid.next
           else
             return mid
