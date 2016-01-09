@@ -4,7 +4,7 @@ module Algorithmable
 
     class << self
       def binary(element, collection)
-        Binary.index_of(element, collection)
+        Binary.lookup(element, collection)
       end
     end
   end

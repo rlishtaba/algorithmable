@@ -64,6 +64,11 @@ describe Algorithmable::DataStructs::Deque do
       expect(container.pop_front).to eq(1)
     end
 
+    it 'can pop back peek value' do
+      items.each { |item| container.push_back item }
+      expect(container.pop_back).to eq(3)
+    end
+
     it 'can handle non existing front peek value' do
       expect(container.peek_front).to be_nil
     end
@@ -81,6 +86,21 @@ describe Algorithmable::DataStructs::Deque do
     it 'can iterate in forward order' do
       items.each { |item| container.push_back item }
       expect(container.map(&:to_s).join(':')).to eq(items.join(':'))
+    end
+
+    it do
+      expect(container.peek_back).to be_nil
+    end
+
+    it 'can return neel if nothing to pop' do
+      items.each { |item| container.push_back item }
+      expected = items.map { container.pop_back }
+      expect(expected).to eq(items.reverse)
+      expect{ container.pop_back}.to raise_error(described_class::NoSuchElementError)
+    end
+
+    it do
+      expect(container.empty?).to be_truthy
     end
   end
 end
