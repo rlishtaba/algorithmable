@@ -95,6 +95,7 @@ module Algorithmable
           @succ = succ
         end
       end
+      private_constant :Node
     end
   end
 end

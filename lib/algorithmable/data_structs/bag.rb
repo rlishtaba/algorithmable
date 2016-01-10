@@ -37,6 +37,7 @@ module Algorithmable
           @succ.each(&block) if @succ
         end
       end
+      private_constant :Node
     end
   end
 end

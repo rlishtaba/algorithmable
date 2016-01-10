@@ -96,7 +96,7 @@ describe Algorithmable::DataStructs::Deque do
       items.each { |item| container.push_back item }
       expected = items.map { container.pop_back }
       expect(expected).to eq(items.reverse)
-      expect{ container.pop_back}.to raise_error(described_class::NoSuchElementError)
+      expect { container.pop_back }.to raise_error(described_class::NoSuchElementError)
     end
 
     it do
