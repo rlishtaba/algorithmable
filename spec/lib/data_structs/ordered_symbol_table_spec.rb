@@ -54,7 +54,6 @@ describe Algorithmable::DataStructs::OrderedSymbolTable do
   end
 
   context '#mutable' do
-
     it do
       tree.delete('k')
       value = tree['k']

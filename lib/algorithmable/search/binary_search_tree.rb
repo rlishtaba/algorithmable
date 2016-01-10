@@ -115,7 +115,6 @@ module Algorithmable
       private
 
       def check_tree_consistency
-        return true
         $stderr.puts 'Tree is not in symmetric order' unless a = symmetric_ordered?
         $stderr.puts 'Tree has size inconsistency' unless b = size_consistent?
         $stderr.puts 'Tree has ranking inconsistency' unless c = rank_consistent?
@@ -134,9 +133,7 @@ module Algorithmable
         cmp_low = low <=> node.key
         cmp_high = high <=> node.key
         impl_keys(node.left, queue, low, high) if cmp_low < 0
-        if cmp_low <= 0 && cmp_high >= 0
-          queue.enqueue node.key
-        end
+        queue.enqueue node.key if cmp_low <= 0 && cmp_high >= 0
         impl_keys(node.right, queue, low, high) if cmp_high > 0
       end
 
