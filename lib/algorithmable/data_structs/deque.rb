@@ -4,6 +4,8 @@ module Algorithmable
       include Algorithmable::Errors
 
       Node = Struct.new(:prev, :next, :item)
+      private_constant :Node
+
       attr_reader :size
 
       def initialize(collection = [])

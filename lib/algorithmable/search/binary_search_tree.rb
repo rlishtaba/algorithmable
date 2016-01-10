@@ -288,6 +288,7 @@ module Algorithmable
           @size = size
         end
       end
+      private_constant :Node
     end
   end
 end
