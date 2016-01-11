@@ -12,6 +12,10 @@ module Algorithmable
       def bubble(collection)
         Bubble.sort(collection)
       end
+
+      def binary_heap(collection)
+        BinaryHeap.sort(collection)
+      end
     end
   end
 end

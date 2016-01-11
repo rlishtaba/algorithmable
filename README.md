@@ -2,8 +2,8 @@
 
 # Algorithmable
 
-Useful algorithms such as Sorting Strategies, Searches and Data Structures such as symbol tables, binary search tree BST, red black tree RBT, 
-hash tables, bag, linked list, deque, queue FIFO, stack LIFO, graphs & Graph Traversal strategies for everyday usage. 
+Useful algorithms such as Sorting Strategies, Searches and Data Structures such as Priority Queues, Symbol Tables, Binary Search Tree BST, Red Black tree RBT,
+Hash Tables, Bag, Linked List, Deque, Queue (FIFO), Stack (LIFO), Graphs & Graph Traversal strategies for everyday usage.
 
 Algorithms and Data Structures implemented using Ruby, for fun.
 
@@ -17,6 +17,8 @@ Library also contains solutions for several puzzles solved by implemented algori
 - Queue (FIFO)
 - Stack (LIFO)
 - Ordered Symbol Table BST. Implementation using Unbalanced Binary Search Tree.
+- Minimum Priority Queue
+- Maximum Priority Queue
 
 ## Graphs
 
@@ -35,11 +37,16 @@ Library also contains solutions for several puzzles solved by implemented algori
 
 - Bubble sort
 - Merge sort
-- Heapsort ( Binary Heap )
+- Heaport ( Binary Heap )
+
+## Algorithms
+
+- Levenshtein Distance algorithm (http://www.levenshtein.net)
+- Lawrence Philips' Metaphone Algorithm (http://aspell.net/metaphone)
 
 # Usage
 
-It is always better to check unit tests in order to understand how things going on. 
+It is always better to check unit tests in order to understand how things going on.
 Most of the components are encapsulated through the factory methods, so the are could be mixed to other objects.
 
 ## Installation
@@ -65,4 +72,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/rlisht
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
