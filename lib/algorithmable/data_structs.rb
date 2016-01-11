@@ -12,8 +12,8 @@ module Algorithmable
       Bag.new
     end
 
-    def new_linked_list
-      LinkedList.new
+    def new_linked_list(collection)
+      LinkedList.new(collection)
     end
 
     def new_fifo_queue
