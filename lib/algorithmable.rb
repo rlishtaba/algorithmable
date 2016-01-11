@@ -11,6 +11,7 @@ module Algorithmable
   autoload :DataStructs, 'algorithmable/data_structs'
   autoload :Graphs, 'algorithmable/graphs'
   autoload :Puzzles, 'algorithmable/puzzles'
+  autoload :LevenshteinDistance, 'algorithmable/levenshtein_distance'
 
   class << self
     def logger
