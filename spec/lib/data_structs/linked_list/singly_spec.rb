@@ -1,8 +1,12 @@
 require 'spec_helper'
 
-describe Algorithmable::DataStructs::LinkedList do
+describe Algorithmable::DataStructs::LinkedList::Singly do
   context '#general' do
     let(:list) { described_class.new }
+
+    it do
+      expect(list.empty?).to be_truthy
+    end
 
     it do
       expect(list).to be_kind_of(described_class)
@@ -25,7 +29,7 @@ describe Algorithmable::DataStructs::LinkedList do
 
     it do
       [1, 2].each { |i| list.push_front i }
-      expect(list.key? 1).to eq(true)
+      expect(list.include? 1).to eq(true)
     end
 
 
@@ -72,7 +76,7 @@ describe Algorithmable::DataStructs::LinkedList do
     it do
       [1, 2, 3].each { |item| list.push_front item }
       list.delete 1
-      expect(list.peek_front).to eq(2)
+      expect(list.peek_front).to eq(3)
       expect(list.peek_back).to eq(2)
     end
 
@@ -100,7 +104,7 @@ describe Algorithmable::DataStructs::LinkedList do
     let(:list) { described_class.new }
 
     before :each do
-      list.clear
+      list.clear!
       collection.each { |item| list.push_front item }
     end
 
@@ -141,7 +145,7 @@ describe Algorithmable::DataStructs::LinkedList do
     let(:list) { described_class.new }
 
     before :each do
-      list.clear
+      list.clear!
       collection.each { |item| list.push_back item }
     end
 
@@ -175,6 +179,16 @@ describe Algorithmable::DataStructs::LinkedList do
     it do
       local_list = described_class.new
       expect(local_list.peek_back).to be_nil
+    end
+  end
+
+  describe 'when reversing list' do
+    let(:collection) { [1, 2, 3] }
+    let(:list) { described_class.new collection }
+
+    it 'can reverse singly linked list' do
+      pending 'reverse linked list'
+      expect(list.reverse.peek_front).to eq(3)
     end
   end
 end

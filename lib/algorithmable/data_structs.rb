@@ -8,12 +8,10 @@ module Algorithmable
     autoload :OrderedSymbolTable, 'algorithmable/data_structs/ordered_symbol_table'
     autoload :Heap, 'algorithmable/data_structs/heap'
 
+    include LinkedList
+
     def new_bag
       Bag.new
-    end
-
-    def new_linked_list(collection)
-      LinkedList.new(collection)
     end
 
     def new_fifo_queue
@@ -26,6 +24,10 @@ module Algorithmable
 
     def new_ordered_symbol_table(key_type, value_type)
       OrderedSymbolTable.new(key_type, value_type)
+    end
+
+    def new_priority_heap(collection, &block)
+      Heap::Max.new(collection, &block)
     end
 
     def new_max_priority_heap(collection = [])
