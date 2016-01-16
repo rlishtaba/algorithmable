@@ -37,20 +37,20 @@ describe Algorithmable::Cups::Primitives do
 
   context 'when removing duplicates from a string' do
     it 'can run' do
-      expect(runtime.remove_duplicates('aaaaaa'.chars)).to eq('a'.chars)
+      expect(runtime.remove_duplicated_chars('aaaaaa'.chars)).to eq('a'.chars)
     end
 
     it 'can remove duplicates from hello string' do
-      expect(runtime.remove_duplicates('hello'.chars)).to eq('helo'.chars)
+      expect(runtime.remove_duplicated_chars('hello'.chars)).to eq('helo'.chars)
     end
 
     it 'can remove extra duplicates from aaabbb string' do
-      expect(runtime.remove_duplicates('aaabbb'.chars)).to eq('ab'.chars)
+      expect(runtime.remove_duplicated_chars('aaabbb'.chars)).to eq('ab'.chars)
     end
 
 
     it 'can remove extra duplicates from hello0zzz string' do
-      expect(runtime.remove_duplicates('hello zzz'.chars)).to eq('hello z'.chars)
+      expect(runtime.remove_duplicated_chars('hello zzz'.chars)).to eq('helo z'.chars)
     end
   end
 

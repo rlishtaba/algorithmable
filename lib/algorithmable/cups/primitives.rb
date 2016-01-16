@@ -49,24 +49,25 @@ module Algorithmable
 
       def remove_duplicated_chars(chars = [])
         return if chars.empty? || chars.size < 2
-        new_tail = 1
+        array_tail = 1
 
-        chars.size.times do |cur_char|
-          prev_char = 0
+        chars.size.times do |cur_char_index|
+          next unless cur_char_index.nonzero?
+          prev_char_index = 0
 
-          while prev_char < new_tail
-            break if chars[cur_char] == chars[prev_char]
-            prev_char += 1
+          while prev_char_index < array_tail
+            break if chars[cur_char_index] == chars[prev_char_index]
+            prev_char_index += 1
           end
 
-          if prev_char == new_tail
-            chars[new_tail] = chars[cur_char]
-            new_tail += 1
+          if prev_char_index == array_tail
+            chars[array_tail] = chars[cur_char_index]
+            array_tail += 1
           end
         end
 
         # trim all after new tail
-        chars[0..new_tail - 1]
+        chars[0...array_tail]
       end
 
       def find_cycled_node(root)
