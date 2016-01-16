@@ -26,20 +26,16 @@ module Algorithmable
       OrderedSymbolTable.new(key_type, value_type)
     end
 
-    def new_priority_heap(collection, &block)
+    def new_priority_queue(collection, &block)
       Heap::Max.new(collection, &block)
     end
 
-    def new_max_priority_heap(collection = [])
+    def new_max_priority_queue(collection = [])
       Heap::Max.new(collection)
     end
 
-    alias_method :new_max_priority_queue, :new_max_priority_heap
-
-    def new_min_priority_heap(collection = [])
+    def new_min_priority_queue(collection = [])
       Heap::Min.new(collection)
     end
-
-    alias_method :new_min_priority_queue, :new_min_priority_heap
   end
 end

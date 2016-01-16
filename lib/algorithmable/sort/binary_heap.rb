@@ -8,7 +8,7 @@ module Algorithmable
       end
 
       def initialize(collection = [])
-        @heap = new_min_priority_heap collection
+        @heap = new_min_priority_queue collection
       end
 
       def sort
