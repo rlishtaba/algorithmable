@@ -13,6 +13,7 @@ module Algorithmable
   autoload :Puzzles, 'algorithmable/puzzles'
   autoload :LevenshteinDistance, 'algorithmable/levenshtein_distance'
   autoload :Cups, 'algorithmable/cups'
+  autoload :Cache, 'algorithmable/cache'
 
   class << self
     def logger
