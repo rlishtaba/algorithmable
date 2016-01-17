@@ -5,7 +5,7 @@ module Algorithmable
 
       def_delegators :@heap, :size, :empty?, :[]
 
-      def initialize(max_size = 1, heap = PrimitiveMaxHeap.new)
+      def initialize(max_size, heap)
         @max_size = max_size
         @heap = heap
       end

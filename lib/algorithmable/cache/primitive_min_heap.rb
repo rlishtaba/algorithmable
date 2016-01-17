@@ -5,9 +5,9 @@ module Algorithmable
 
       def_delegators :@index, :size, :empty?
 
-      def initialize
+      def initialize(index = [])
         @storage = {}
-        @index = []
+        @index = index
       end
 
       def pop
@@ -25,6 +25,8 @@ module Algorithmable
           sink key if value
         end
       end
+
+      private
 
       def sink(key)
         @index.delete(key)
