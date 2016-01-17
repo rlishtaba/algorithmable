@@ -9,6 +9,10 @@ describe Algorithmable::DataStructs::Bag do
     end
 
     it do
+      expect(bag.empty?).to be_truthy
+    end
+
+    it do
       bag.add 1
       expect(bag.size).to eq(1)
     end

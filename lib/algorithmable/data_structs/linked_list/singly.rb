@@ -118,16 +118,6 @@ module Algorithmable
           end
         end
 
-        def each(&block)
-          nodes = []
-          node = @front
-          until node.nil?
-            nodes << node
-            node = node.next
-          end
-          nodes.each(&block)
-        end
-
         def new_node(item, next_pinter = nil)
           Node.new item, next_pinter
         end

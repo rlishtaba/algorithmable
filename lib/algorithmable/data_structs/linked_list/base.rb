@@ -29,8 +29,8 @@ module Algorithmable
           @back && @back.item
         end
 
-        def include?(obj)
-          each.map(&:item).include? obj
+        def include?(item)
+          !search(item).nil?
         end
 
         def push_back(_item)
@@ -62,6 +62,26 @@ module Algorithmable
         end
 
         private
+
+        def search(item)
+          return if empty?
+          node = @front
+          while node
+            break if node.item == item
+            node = node.next
+          end
+          node
+        end
+
+        def each(&block)
+          nodes = []
+          node = @front
+          until node.nil?
+            nodes << node
+            node = node.next
+          end
+          nodes.each(&block)
+        end
 
         def new_node(_item, *_args)
           fail NotImplementedError
