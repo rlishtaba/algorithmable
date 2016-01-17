@@ -61,6 +61,18 @@ module Algorithmable
           fail NotImplementedError
         end
 
+        def find_intersect(_other)
+          fail NotImplementedError
+        end
+
+        def to_s
+          to_a.join('->')
+        end
+
+        def to_a
+          each.map(&:item)
+        end
+
         private
 
         def search(item)

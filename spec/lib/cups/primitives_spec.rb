@@ -68,4 +68,40 @@ describe Algorithmable::Cups::Primitives do
       expect(runtime.find_cycled_node(head)).to eq(broken_node)
     end
   end
+
+  context 'when assembling ransom note' do
+    let(:magazine) do
+      'Hello, World!'
+    end
+    it do
+      note = 'old'
+      expect(runtime.ransom_note(note, magazine)).to be_truthy
+    end
+
+    it do
+      note = 'hola'
+      expect(runtime.ransom_note(note, magazine)).to be_falsey
+    end
+  end
+
+
+  context 'when solving anagrams' do
+    it 'can solve anagram problem' do
+      word = 'alla'
+      other_word = 'aall'
+      expect(runtime.anagrams?(word, other_word)).to be_truthy
+    end
+
+    it 'can return early' do
+      word = 'alla'
+      other_word = 'bar'
+      expect(runtime.anagrams?(word, other_word)).to be_falsey
+    end
+
+    it 'can detect if words are not anagrams' do
+      word = 'alla'
+      other_word = 'abba'
+      expect(runtime.anagrams?(word, other_word)).to be_falsey
+    end
+  end
 end

@@ -3,7 +3,7 @@ module Algorithmable
     module LinkedList
       class Singly < Base
         class Node
-          attr_accessor :item, :next
+          attr_accessor :item, :next, :front
 
           def initialize(item, next_pointer = nil)
             @item = item
@@ -93,7 +93,31 @@ module Algorithmable
           end
         end
 
+        def immutable_merge(other)
+          front = recursive_merge_imp self.front, other.front
+          list = self.class.new
+          while front
+            list.push_back front.item
+            front = front.next
+          end
+          list
+        end
+
         private
+
+        def recursive_merge_imp(node1, node2)
+          return node2 if node1.nil?
+          return node1 if node2.nil?
+          node1 = node1.dup
+          node2 = node2.dup
+          if node1.item < node2.item
+            node1.next = recursive_merge_imp(node1.next, node2)
+            node1
+          else
+            node2.next = recursive_merge_imp(node2.next, node1)
+            node2
+          end
+        end
 
         def reverse_imp(root)
           return root if root.nil? || root.next.nil?

@@ -93,6 +93,33 @@ module Algorithmable
         # at this point return value is a node which is tail pointing to.
         fast
       end
+
+      def ransom_note(note, magazine)
+        ascii_table = Hash.new 0
+        source = magazine.chars
+
+        source.each do |char|
+          ascii_table[char] += 1
+        end
+
+        note.chars.each do |char|
+          return false unless ascii_table[char].nonzero?
+          ascii_table[char] -= 1
+        end
+
+        true
+      end
+
+      def anagrams?(string, other_string)
+        return false unless string.size == other_string.size
+        registry = Hash.new 0
+        string.each_char do |char|
+          registry[char] += 1
+        end
+        other_string.chars.none? do |char|
+          (registry[char] -= 1) < 0
+        end
+      end
     end
   end
 end
