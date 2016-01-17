@@ -12,6 +12,7 @@ Library also contains solutions for several puzzles solved by implemented algori
 ## Data Structures
 
 - Bag (primitive collection without ability to delete elements)
+- Singly Linked List
 - Doubly Linked List
 - Deque (double-ended queue)
 - Queue (FIFO)
@@ -19,6 +20,7 @@ Library also contains solutions for several puzzles solved by implemented algori
 - Ordered Symbol Table BST. Implementation using Unbalanced Binary Search Tree.
 - Minimum Priority Queue
 - Maximum Priority Queue
+- Ordered Symbol Table
 
 ## Graphs
 
@@ -37,12 +39,17 @@ Library also contains solutions for several puzzles solved by implemented algori
 
 - Bubble sort
 - Merge sort
-- Heaport ( Binary Heap )
+- Heapsort ( Binary Heap )
 
 ## Algorithms
 
 - Levenshtein Distance algorithm (http://www.levenshtein.net)
 - Lawrence Philips' Metaphone Algorithm (http://aspell.net/metaphone)
+
+## Puzzles
+
+- Shunting-yard algorithm ( Dijkstras two stacks algorithm )
+- Josephus problem
 
 # Usage
 
