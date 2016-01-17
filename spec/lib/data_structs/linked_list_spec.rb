@@ -1,36 +1,27 @@
 require 'spec_helper'
 
 describe Algorithmable::DataStructs::LinkedList do
-  context '#general' do
-    before :each do
-      @list = described_class.new
+  let(:factory) do
+    Object.new.extend Algorithmable::DataStructs::LinkedList
+  end
+
+  context 'when factoring new lists' do
+    it 'can produce new singly linked list' do
+      expect(factory.new_singly_linked_list).to be_kind_of(described_class::Base)
     end
 
-    it do
-      expect(@list).to be_kind_of(described_class)
+    it 'can produce new singly linked list with arguments' do
+      list = factory.new_singly_linked_list [1, 2, 3]
+      expect(list.size).to eq(3)
     end
 
-    it do
-      @list.unshift 1
-      expect(@list.length).to eq(1)
+    it 'can produce new singly linked list' do
+      expect(factory.new_doubly_linked_list).to be_kind_of(described_class::Base)
     end
 
-    it do
-      [3, 2, 1].each { |item| @list.unshift item }
-      expect(@list.first.data).to eq(1)
-    end
-
-    it do
-      [3, 2, 1].each { |item| @list.push item }
-      expect(@list.first.data).to eq(3)
-    end
-
-    it do
-      expect { @list.first }.to raise_error(IndexError)
-    end
-
-    it do
-      expect { @list.last }.to raise_error(IndexError)
+    it 'can produce new singly linked list with arguments' do
+      list = factory.new_doubly_linked_list [1, 2, 3]
+      expect(list.size).to eq(3)
     end
   end
 end

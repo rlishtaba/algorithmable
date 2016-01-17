@@ -12,6 +12,7 @@ module Algorithmable
   autoload :Graphs, 'algorithmable/graphs'
   autoload :Puzzles, 'algorithmable/puzzles'
   autoload :LevenshteinDistance, 'algorithmable/levenshtein_distance'
+  autoload :Cups, 'algorithmable/cups'
 
   class << self
     def logger
