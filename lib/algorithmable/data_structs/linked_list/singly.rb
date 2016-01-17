@@ -1,53 +1,17 @@
 module Algorithmable
   module DataStructs
     module LinkedList
-      class Singly
-        include Algorithmable::DataStructs::LinkedList::Interface
+      class Singly < Base
+        class Node
+          attr_accessor :item, :next
 
-        attr_reader :size
-
-        def initialize(collection = [])
-          @front = nil
-          @back = nil
-          @size = 0
-          collection.each { |item| push_front item }
-        end
-
-        def empty?
-          0 == size
-        end
-
-        def clear!
-          @front = nil
-          @back = nil
-          @size = 0
-        end
-
-        def peek_front
-          @front && @front.item
-        end
-
-        def peek_back
-          @back && @back.item
-        end
-
-        def include?(obj)
-          each.map(&:item).include? obj
-        end
-
-        def pop_front
-          return unless @front
-          node = @front
-
-          if @front == @back
-            clear!
-          else
-            @front = @front.next
-            @size -= 1
+          def initialize(item, next_pointer = nil)
+            @item = item
+            @next = next_pointer
           end
-
-          node.item
         end
+
+        private_constant :Node
 
         def push_front(obj)
           node = new_node(obj)
@@ -73,6 +37,20 @@ module Algorithmable
           end
           @size += 1
           obj
+        end
+
+        def pop_front
+          return unless @front
+          node = @front
+
+          if @front == @back
+            clear!
+          else
+            @front = @front.next
+            @size -= 1
+          end
+
+          node.item
         end
 
         def pop_back
@@ -150,8 +128,8 @@ module Algorithmable
           nodes.each(&block)
         end
 
-        def new_node(item, pointer = nil)
-          Node.new(item, pointer)
+        def new_node(item, next_pinter = nil)
+          Node.new item, next_pinter
         end
       end
     end
