@@ -120,6 +120,53 @@ module Algorithmable
           (registry[char] -= 1) < 0
         end
       end
+
+      def parse_string_with_escapes(string)
+        app_state = {
+            chunk_id: 0,
+            escaping: false,
+            prev_char: nil,
+            chunks: Hash.new { |h, k| h[k] = [] }
+        }
+
+        string.each_char do |char|
+          parse_char char, app_state
+        end
+
+        app_state[:chunks].values
+      end
+
+      def parse_char(char, state)
+        chunk_id = state[:chunk_id]
+        case char
+          when %r{[\(\{\[\)\}\]]}
+            state[:escaping] = char != state[:prev_char]
+            state[:chunks][chunk_id] << char unless state[:escaping]
+          else
+            if state[:escaping]
+              chunk_id = state[:chunk_id] += 1
+              state[:escaping] = false
+            end
+            state[:chunks][chunk_id] << char
+        end
+        state[:prev_char] = char
+      end
+
+      def remove_duplicates_from_list(list)
+        map = {}
+        prev = nil
+        node = list.front
+
+        while node
+          if map[node.item]
+            prev.next = node.next
+          else
+            map[node.item] = true
+            prev = node
+          end
+          node = node.next
+        end
+      end
     end
   end
 end
