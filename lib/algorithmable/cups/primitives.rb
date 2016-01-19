@@ -167,6 +167,81 @@ module Algorithmable
           node = node.next
         end
       end
+
+      def nth_to_last_in_list(list, nth = 1)
+        return if list.nil? || list.empty?
+        node1 = list.front
+        node2 = list.front
+
+        nth.downto(nth).each do |i|
+          if node1
+
+          end
+        end
+      end
+
+=begin
+
+int maxDiff(int arr[], int arr_size)
+{
+  int max_diff = arr[1] - arr[0];
+  int i, j;
+  for(i = 0; i < arr_size; i++)
+  {
+    for(j = i+1; j < arr_size; j++)
+    {
+      if(arr[j] - arr[i] > max_diff)
+         max_diff = arr[j] - arr[i];
+    }
+  }
+  return max_diff;
+}
+
+getBestTime(int stocks[], int sz, int &buy, int &sell) {
+  int min = 0;
+  int maxDiff = 0;
+  buy = sell = 0;
+  for (int i = 0; i < sz; i++) {
+    if (stocks[i] < stocks[min])
+      min = i;
+    int diff = stocks[i] - stocks[min];
+    if (diff > maxDiff) {
+      buy = min;
+      sell = i;
+      maxDiff = diff;
+    }
+  }
+}
+
+=end
+
+
+      def sort_linked_list(node)
+        return unless node || node.empty?
+        swapped = false
+        prev = nil
+
+        begin
+          swapped = false
+          current = node
+
+          until current.next == prev
+            if current.item > current.next.item
+              swap_nodes current, current.next
+              swapped = true
+            end
+            current = current.next
+          end
+
+          prev = current
+        end while swapped
+      end
+
+      def swap_nodes(node1, node2)
+        tmp = node1.item
+        node1.item = node2.item
+        node2.item = tmp
+      end
     end
   end
 end
