@@ -205,18 +205,4 @@ describe Algorithmable::Cups::Primitives do
       expect(list.to_a).to eq([1, 3, 0, 4, 5].sort)
     end
   end
-
-  context 'find maximum profit' do
-    it do
-      stocks = [12, 15, 21, 17, 40, 10]
-      mx = runtime.find_max_profit(stocks)
-      expect(mx).to eq(28)
-    end
-
-    it 'can get best time' do
-      stocks = [12, 15, 21, 17, 40, 10]
-      best_time = runtime.get_best_time stocks
-      expect(best_time.values).to eq({buy_at: 0, sell_at: 4, profit: 28})
-    end
-  end
 end

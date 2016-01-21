@@ -16,4 +16,18 @@ describe Algorithmable::Cups::Stocks do
     ]
     expect(transactions).to eq(series)
   end
+
+  context 'find maximum profit' do
+    it do
+      stocks = [12, 15, 21, 17, 40, 10]
+      mx = runtime.find_max_profit(stocks)
+      expect(mx).to eq(28)
+    end
+
+    it 'can get best time' do
+      stocks = [12, 15, 21, 17, 40, 10]
+      best_time = runtime.get_best_time stocks
+      expect(best_time).to eq({buy_at: 0, sell_at: 4, max_profit: 28})
+    end
+  end
 end

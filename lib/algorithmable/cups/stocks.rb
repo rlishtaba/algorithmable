@@ -52,46 +52,6 @@ module Algorithmable
       # 4. Repeat the above steps if end is not reached.
       #
       # http://www.geeksforgeeks.org/stock-buy-sell/
-
-      def buy_and_sell_stocks(stocks)
-        return if stocks.size <= 1
-        count = 0
-        i = 0
-        length = stocks.length
-        solutions = []
-
-        while i < (length - 1)
-
-          # Find Local Minima. Note that the limit is (n-2) as we are
-          # comparing present element to the next element.
-          while i < (length - 1) && (stocks[i + 1] <= stocks[i])
-            i += 1
-          end
-
-          if i == length - 1
-            puts 'break'
-            break
-          end
-
-          solutions[count] ||= {}
-          solutions[count][:buy] = i
-
-          i += 1
-
-          # Find Local Maxima.  Note that the limit is (n-1) as we are
-          # comparing to previous element
-          while i < length && (stocks[i] >= stocks[i - 1])
-            i += 1
-          end
-          solutions[count][:sell] = i - 1
-
-          count += 1
-        end
-
-        solutions
-      end
-
-
       def ruby_buy_and_sell_stocks(stocks)
         total_days = stocks.size - 1
         current_day = 0
