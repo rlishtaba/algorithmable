@@ -70,4 +70,21 @@ describe Algorithmable::Cups::StacksAndQueues do
       expect(sorted.to_a).to eq(items.sort)
     end
   end
+
+  context 'when solving Towers of Hanoi puzzle' do
+    let(:towers) do
+      1.upto(3).each_with_object([]) do |index, object|
+        object << runtime.new_tower_of_hanoi(index)
+      end
+    end
+
+    it do
+      disks = 4
+      (disks).downto(1).each { |disk| towers[0].add disk }
+
+      expect(towers[0].to_a).to eq([1, 2, 3, 4])
+      towers[0].move_disks disks, towers[2], towers[1]
+      expect(towers[2].to_a).to eq([1, 2, 3, 4])
+    end
+  end
 end

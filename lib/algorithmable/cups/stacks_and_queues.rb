@@ -5,6 +5,7 @@ module Algorithmable
       autoload :StackWithMin, 'algorithmable/cups/stacks_and_queues/stack_with_min'
       autoload :TripleStack, 'algorithmable/cups/stacks_and_queues/triple_stack'
       autoload :StackSorter, 'algorithmable/cups/stacks_and_queues/stack_sorter'
+      autoload :TowersOfHanoi, 'algorithmable/cups/stacks_and_queues/towers_of_hanoi'
 
       def new_triple_stack(size)
         TripleStack.new size
@@ -20,6 +21,10 @@ module Algorithmable
 
       def sort_stack(stack)
         StackSorter.sort stack
+      end
+
+      def new_tower_of_hanoi(index)
+        TowersOfHanoi::Tower.new index
       end
     end
   end
