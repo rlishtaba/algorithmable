@@ -19,7 +19,7 @@ module Algorithmable
 
           def move_top_to_tower(other_tower)
             top = @disks.pop
-            debug "Moving #{top} from #{index} to #{other_tower.index}."
+            debug "Moving disk ##{top} from tower #{index} to #{other_tower.index}."
             other_tower.add top
           end
 

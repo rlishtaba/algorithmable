@@ -53,10 +53,17 @@ module Algorithmable
           fail NotImplementedError
         end
 
-        def reverse
+        def reverse!
           fail NotImplementedError
         end
 
+        def sort!
+          fail NotImplementedError
+        end
+
+        def merge!(_other_list)
+          fail NotImplementedError
+        end
         def merge(_other_list)
           fail NotImplementedError
         end

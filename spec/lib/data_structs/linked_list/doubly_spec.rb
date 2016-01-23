@@ -205,7 +205,7 @@ describe Algorithmable::DataStructs::LinkedList::Doubly do
 
     it 'can reverse singly linked list' do
       pending 'reverse linked list'
-      expect(list.reverse.peek_front).to eq(3)
+      expect(list.reverse!.peek_front).to eq(3)
     end
   end
 end

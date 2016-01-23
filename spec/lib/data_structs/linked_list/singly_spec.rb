@@ -187,8 +187,11 @@ describe Algorithmable::DataStructs::LinkedList::Singly do
     let(:list) { described_class.new collection }
 
     it 'can reverse singly linked list' do
-      pending 'reverse linked list'
-      expect(list.reverse.peek_front).to eq(3)
+      expect(list.peek_front).to eq(3)
+      expect(list.peek_back).to eq(1)
+      list.reverse!
+      expect(list.peek_front).to eq(1)
+      expect(list.peek_back).to eq(3)
     end
   end
 
@@ -197,14 +200,14 @@ describe Algorithmable::DataStructs::LinkedList::Singly do
     let(:list2) { described_class.new [2, 4, 6, 8].reverse }
 
     it do
-      merged = list1.immutable_merge list2
+      merged = list1.merge list2
       expect(merged.to_a).to eq([1, 2, 3, 4, 5, 6, 7, 8])
     end
 
     it do
       l1 = described_class.new [0]
       l2 = described_class.new [0]
-      merged = l1.immutable_merge l2
+      merged = l1.merge l2
       expect(merged.to_a).to eq([0, 0])
     end
   end

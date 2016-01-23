@@ -93,7 +93,7 @@ module Algorithmable
           end
         end
 
-        def immutable_merge(other)
+        def merge(other)
           front = recursive_merge_imp self.front, other.front
           list = self.class.new
           while front
@@ -103,7 +103,44 @@ module Algorithmable
           list
         end
 
+        def reverse!
+          @back = @front
+          @front = reverse_imp @front
+          self
+        end
+
+        def sort!
+          sort_linked_list @front
+        end
+
         private
+
+        def sort_linked_list(node)
+          return unless node || node.empty?
+          swapped = false
+          prev = nil
+
+          begin
+            swapped = false
+            current = node
+
+            until current.next == prev
+              if current.item > current.next.item
+                swap_nodes current, current.next
+                swapped = true
+              end
+              current = current.next
+            end
+
+            prev = current
+          end while swapped
+        end
+
+        def swap_nodes(node1, node2)
+          tmp = node1.item
+          node1.item = node2.item
+          node2.item = tmp
+        end
 
         def recursive_merge_imp(node1, node2)
           return node2 if node1.nil?
