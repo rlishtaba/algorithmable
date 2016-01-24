@@ -72,6 +72,7 @@ module Algorithmable
           stack
         end
 
+        # in-order traversal
         def dfs_impl(node, stack)
           dfs_impl node.left, stack if node.left
           stack.push node.item
