@@ -79,10 +79,10 @@ module Algorithmable
 
       class PuzzleSolver
         def self.find_sum_of_nodes_in(nested_list)
-          new.solve nested_list
+          new.find_sum_of_nodes_in nested_list
         end
 
-        def solve(nested_list)
+        def find_sum_of_nodes_in(nested_list)
           recursive_sum nested_list, 1
         end
 
