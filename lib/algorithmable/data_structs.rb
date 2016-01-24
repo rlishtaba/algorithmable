@@ -24,6 +24,10 @@ module Algorithmable
       Stack.new
     end
 
+    def new_deque_queue
+      Deque.new
+    end
+
     def new_ordered_symbol_table(key_type, value_type)
       OrderedSymbolTable.new(key_type, value_type)
     end
