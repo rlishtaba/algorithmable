@@ -54,7 +54,8 @@ module Algorithmable
         def to_print
           return if empty?
           queue = new_fifo_queue
-          level, next_level = 0, 1
+          level = 0
+          next_level = 1
           out = []
           queue.enqueue @root
           until queue.empty?
@@ -66,7 +67,7 @@ module Algorithmable
 
             if level == next_level
               next_level += queue.size
-              out << ?\n
+              out << "\n"
             end
           end
           out.join
@@ -113,12 +114,12 @@ module Algorithmable
         def put_impl(node, object)
           return make_node(object, 1) unless node
           case object <=> node.item
-            when -1
-              node.left = put_impl(node.left, object)
-            when 1
-              node.right = put_impl(node.right, object)
-            else
-              node.item = object
+          when -1
+            node.left = put_impl(node.left, object)
+          when 1
+            node.right = put_impl(node.right, object)
+          else
+            node.item = object
           end
           node.size = 1 + size_of(node.left) + size_of(node.right)
           node
