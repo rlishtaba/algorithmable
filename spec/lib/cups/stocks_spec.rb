@@ -7,12 +7,12 @@ describe Algorithmable::Cups::Stocks do
     stocks = [100, 180, 260, 310, 40, 535, 695]
     transactions = runtime.ruby_buy_and_sell_stocks stocks
     transactions.each do |transaction|
-      puts("Buy on day: #{transaction[:buy]} Sell on day: #{transaction[:sell]}");
+      puts("Buy on day: #{transaction[:buy]} Sell on day: #{transaction[:sell]}")
     end
 
     series = [
-        {buy: 0, sell: 3},
-        {buy: 4, sell: 6}
+      { buy: 0, sell: 3 },
+      { buy: 4, sell: 6 }
     ]
     expect(transactions).to eq(series)
   end
@@ -27,7 +27,7 @@ describe Algorithmable::Cups::Stocks do
     it 'can get best time' do
       stocks = [12, 15, 21, 17, 40, 10]
       best_time = runtime.get_best_time stocks
-      expect(best_time).to eq({buy_at: 0, sell_at: 4, max_profit: 28})
+      expect(best_time).to eq(buy_at: 0, sell_at: 4, max_profit: 28)
     end
   end
 end

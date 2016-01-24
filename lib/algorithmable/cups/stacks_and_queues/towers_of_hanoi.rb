@@ -31,7 +31,7 @@ module Algorithmable
           end
 
           def inspect
-            "#<Tower ##{index} #{@disks.to_s}>"
+            "#<Tower ##{index} #{@disks}>"
           end
 
           def to_a

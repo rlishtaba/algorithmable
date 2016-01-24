@@ -7,8 +7,10 @@ module Algorithmable
     autoload :Stack, 'algorithmable/data_structs/stack'
     autoload :OrderedSymbolTable, 'algorithmable/data_structs/ordered_symbol_table'
     autoload :Heap, 'algorithmable/data_structs/heap'
+    autoload :Tree, 'algorithmable/data_structs/tree'
 
     include LinkedList
+    include Tree
 
     def new_bag
       Bag.new

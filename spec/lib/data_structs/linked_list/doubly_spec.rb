@@ -32,7 +32,6 @@ describe Algorithmable::DataStructs::LinkedList::Doubly do
       expect(list.include? 1).to eq(true)
     end
 
-
     it do
       expect(list.peek_back).to be_nil
     end
@@ -70,7 +69,6 @@ describe Algorithmable::DataStructs::LinkedList::Doubly do
       expect(list.size).to eq(0)
     end
 
-
     it do
       [1, 2, 3].each { |item| list.push_front item }
       list.delete 3
@@ -96,7 +94,6 @@ describe Algorithmable::DataStructs::LinkedList::Doubly do
       expect(list.peek_front).to eq(3)
       expect(list.peek_back).to eq(2)
     end
-
 
     # it 'can find merge node in a sorted linked list' do
     #   a_collection = [1, 3, 5, 7, 9]

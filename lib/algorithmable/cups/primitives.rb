@@ -20,7 +20,7 @@ module Algorithmable
               j = index + 1
               chars[new_length - j] = char
             end
-            new_length = new_length - replacement.length
+            new_length -= replacement.length
           else
             new_length -= 1
             chars[new_length] = string[i]
@@ -71,7 +71,7 @@ module Algorithmable
       end
 
       def find_cycled_node(root)
-        return unless root.next or root.next.next
+        return unless root.next || root.next.next
         slow = root
         fast = root
 
@@ -139,15 +139,15 @@ module Algorithmable
       def parse_char(char, state)
         chunk_id = state[:chunk_id]
         case char
-          when %r{[\(\{\[\)\}\]]}
-            state[:escaping] = char != state[:prev_char]
-            state[:chunks][chunk_id] << char unless state[:escaping]
-          else
-            if state[:escaping]
-              chunk_id = state[:chunk_id] += 1
-              state[:escaping] = false
-            end
-            state[:chunks][chunk_id] << char
+        when /[\(\{\[\)\}\]]/
+          state[:escaping] = char != state[:prev_char]
+          state[:chunks][chunk_id] << char unless state[:escaping]
+        else
+          if state[:escaping]
+            chunk_id = state[:chunk_id] += 1
+            state[:escaping] = false
+          end
+          state[:chunks][chunk_id] << char
         end
         state[:prev_char] = char
       end
@@ -173,48 +173,45 @@ module Algorithmable
         node1 = list.front
         node2 = list.front
 
-        nth.downto(nth).each do |i|
+        nth.downto(nth).each do |_i|
           if node1
 
           end
         end
       end
 
-=begin
-
-int maxDiff(int arr[], int arr_size)
-{
-  int max_diff = arr[1] - arr[0];
-  int i, j;
-  for(i = 0; i < arr_size; i++)
-  {
-    for(j = i+1; j < arr_size; j++)
-    {
-      if(arr[j] - arr[i] > max_diff)
-         max_diff = arr[j] - arr[i];
-    }
-  }
-  return max_diff;
-}
-
-getBestTime(int stocks[], int sz, int &buy, int &sell) {
-  int min = 0;
-  int maxDiff = 0;
-  buy = sell = 0;
-  for (int i = 0; i < sz; i++) {
-    if (stocks[i] < stocks[min])
-      min = i;
-    int diff = stocks[i] - stocks[min];
-    if (diff > maxDiff) {
-      buy = min;
-      sell = i;
-      maxDiff = diff;
-    }
-  }
-}
-
-=end
-
+      #
+      # int maxDiff(int arr[], int arr_size)
+      # {
+      #   int max_diff = arr[1] - arr[0];
+      #   int i, j;
+      #   for(i = 0; i < arr_size; i++)
+      #   {
+      #     for(j = i+1; j < arr_size; j++)
+      #     {
+      #       if(arr[j] - arr[i] > max_diff)
+      #          max_diff = arr[j] - arr[i];
+      #     }
+      #   }
+      #   return max_diff;
+      # }
+      #
+      # getBestTime(int stocks[], int sz, int &buy, int &sell) {
+      #   int min = 0;
+      #   int maxDiff = 0;
+      #   buy = sell = 0;
+      #   for (int i = 0; i < sz; i++) {
+      #     if (stocks[i] < stocks[min])
+      #       min = i;
+      #     int diff = stocks[i] - stocks[min];
+      #     if (diff > maxDiff) {
+      #       buy = min;
+      #       sell = i;
+      #       maxDiff = diff;
+      #     }
+      #   }
+      # }
+      #
 
       def sort_linked_list(node)
         return unless node || node.empty?

@@ -32,7 +32,6 @@ describe Algorithmable::DataStructs::LinkedList::Singly do
       expect(list.include? 1).to eq(true)
     end
 
-
     it do
       expect(list.peek_back).to be_nil
     end
@@ -79,7 +78,6 @@ describe Algorithmable::DataStructs::LinkedList::Singly do
       expect(list.peek_front).to eq(3)
       expect(list.peek_back).to eq(2)
     end
-
 
     # it 'can find merge node in a sorted linked list' do
     #   a_collection = [1, 3, 5, 7, 9]

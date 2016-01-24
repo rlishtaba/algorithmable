@@ -1,7 +1,6 @@
 module Algorithmable
   module Cups
     module Stocks
-
       # If you were only permitted to buy one share of the stock and sell one share of the stock,
       # design an algorithm to find the best times to buy and sell.
       def get_best_time(stocks)
@@ -12,13 +11,12 @@ module Algorithmable
         0.upto(stocks.size - 1).each do |i|
           min = i if stocks[i] < stocks[min]
           diff = stocks[i] - stocks[min]
-          if diff > max_diff
-            buy = min
-            sell = i
-            max_diff = diff
-          end
+          next unless diff > max_diff
+          buy = min
+          sell = i
+          max_diff = diff
         end
-        {buy_at: buy, sell_at: sell, max_profit: max_diff}
+        { buy_at: buy, sell_at: sell, max_profit: max_diff }
       end
 
       # another way
@@ -27,9 +25,7 @@ module Algorithmable
         max_diff = arr[1] - arr[0]
         0.upto(arr.size).each do |i|
           (i + 1).upto(arr.size - 1).each do |j|
-            if arr[j] - arr[i] > max_diff
-              max_diff = arr[j] - arr[i]
-            end
+            max_diff = arr[j] - arr[i] if arr[j] - arr[i] > max_diff
           end
         end
         max_diff
@@ -65,7 +61,7 @@ module Algorithmable
 
           return series if current_day == total_days
 
-          series[series_count] = {buy: 0, sell: 0}
+          series[series_count] = { buy: 0, sell: 0 }
           series[series_count][:buy] = current_day
           current_day += 1
 

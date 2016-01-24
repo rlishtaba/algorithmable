@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 describe Algorithmable::Cups::Primitives do
   include Algorithmable::DataStructs
   let(:runtime) { Object.new.extend Algorithmable::Cups::Primitives }
@@ -48,7 +47,6 @@ describe Algorithmable::Cups::Primitives do
       expect(runtime.remove_duplicated_chars('aaabbb'.chars)).to eq('ab'.chars)
     end
 
-
     it 'can remove extra duplicates from hello0zzz string' do
       expect(runtime.remove_duplicated_chars('hello zzz'.chars)).to eq('helo z'.chars)
     end
@@ -83,7 +81,6 @@ describe Algorithmable::Cups::Primitives do
       expect(runtime.ransom_note(note, magazine)).to be_falsey
     end
   end
-
 
   context 'when solving anagrams' do
     it 'can solve anagram problem' do
@@ -175,7 +172,7 @@ describe Algorithmable::Cups::Primitives do
     end
 
     it do
-      db = {index: [], relations: Hash.new { |h, k| h[k] = [] }}
+      db = { index: [], relations: Hash.new { |h, k| h[k] = [] } }
       tokenizer = Tokenizer.new
 
       tokenizer.parse(input) do |id, name, boss, occupation, year|
