@@ -51,6 +51,27 @@ module Algorithmable
           block_given? ? tmp.each(&block) : tmp
         end
 
+        def to_print
+          return if empty?
+          queue = new_fifo_queue
+          level, next_level = 0, 1
+          out = []
+          queue.enqueue @root
+          until queue.empty?
+            level += 1
+            node = queue.dequeue
+            out << node.item << ' '
+            queue.enqueue node.left if node.left
+            queue.enqueue node.right if node.right
+
+            if level == next_level
+              next_level += queue.size
+              out << ?\n
+            end
+          end
+          out.join
+        end
+
         private
 
         def collect_nodes_with_bfs(root)
@@ -67,7 +88,7 @@ module Algorithmable
         end
 
         def collect_nodes_with_dfs(node)
-          stack = new_lifo_queue
+          stack = []
           dfs_impl node, stack
           stack
         end
@@ -92,12 +113,12 @@ module Algorithmable
         def put_impl(node, object)
           return make_node(object, 1) unless node
           case object <=> node.item
-          when -1
-            node.left = put_impl(node.left, object)
-          when 1
-            node.right = put_impl(node.right, object)
-          else
-            node.item = object
+            when -1
+              node.left = put_impl(node.left, object)
+            when 1
+              node.right = put_impl(node.right, object)
+            else
+              node.item = object
           end
           node.size = 1 + size_of(node.left) + size_of(node.right)
           node
