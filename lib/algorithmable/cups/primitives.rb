@@ -139,15 +139,15 @@ module Algorithmable
       def parse_char(char, state)
         chunk_id = state[:chunk_id]
         case char
-        when /[\(\{\[\)\}\]]/
-          state[:escaping] = char != state[:prev_char]
-          state[:chunks][chunk_id] << char unless state[:escaping]
-        else
-          if state[:escaping]
-            chunk_id = state[:chunk_id] += 1
-            state[:escaping] = false
-          end
-          state[:chunks][chunk_id] << char
+          when /[\(\{\[\)\}\]]/
+            state[:escaping] = char != state[:prev_char]
+            state[:chunks][chunk_id] << char unless state[:escaping]
+          else
+            if state[:escaping]
+              chunk_id = state[:chunk_id] += 1
+              state[:escaping] = false
+            end
+            state[:chunks][chunk_id] << char
         end
         state[:prev_char] = char
       end
@@ -238,6 +238,31 @@ module Algorithmable
         tmp = node1.item
         node1.item = node2.item
         node2.item = tmp
+      end
+
+      # Write a program that gives count of common characters presented in an array of strings..(or array of character arrays)
+      #
+      # For eg.. for the following input strings..
+      #
+      # aghkafgklt
+      # dfghako
+      # qwemnaarkf
+      #
+      # The output should be 3. because the characters a, f and k are present in all 3 strings.
+      #
+      # Note: The input strings contains only lower case alphabets
+      def find_common_chars_in_words(collection)
+        map = Hash.new 0
+
+        collection.each_with_index do |word, index|
+          word.chars.each do |char|
+            map[char] += 1 if map[char] == index
+          end
+        end
+
+        map.select do |key, value|
+          {key => value} if value == collection.size
+        end
       end
     end
   end

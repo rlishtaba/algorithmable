@@ -172,7 +172,7 @@ describe Algorithmable::Cups::Primitives do
     end
 
     it do
-      db = { index: [], relations: Hash.new { |h, k| h[k] = [] } }
+      db = {index: [], relations: Hash.new { |h, k| h[k] = [] }}
       tokenizer = Tokenizer.new
 
       tokenizer.parse(input) do |id, name, boss, occupation, year|
@@ -200,6 +200,17 @@ describe Algorithmable::Cups::Primitives do
       runtime.sort_linked_list list.front
 
       expect(list.to_a).to eq([1, 3, 0, 4, 5].sort)
+    end
+  end
+
+  context 'find common chars in a list of words' do
+    let(:words) do
+      %w(aghkafgklt dfghako qwemnaarkf)
+    end
+
+    it do
+      common = runtime.find_common_chars_in_words words
+      expect(common).to eq({'a' => 3, 'k' => 3, 'f' => 3})
     end
   end
 end
