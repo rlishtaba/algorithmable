@@ -82,17 +82,17 @@ module Algorithmable
           new.solve nested_list
         end
 
-        def solve(list)
-          parts = recursive_traversal list, 1
-          parts.inject(:+)
+        def solve(nested_list)
+          recursive_sum nested_list, 1
         end
 
-        def recursive_traversal(list, level, sum = [])
-          list.each do |item|
-            if item.integer?
-              sum << item * level
+        def recursive_sum(list, at_level)
+          sum = 0
+          list.each do |entry|
+            if entry.integer?
+              sum += entry * at_level
             else
-              recursive_traversal item, level + 1, sum
+              sum += recursive_sum entry, at_level + 1
             end
           end
           sum
