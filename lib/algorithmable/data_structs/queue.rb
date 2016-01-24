@@ -23,6 +23,10 @@ module Algorithmable
       def dequeue
         @imp.pop_front
       end
+
+      def to_s
+        to_a.join('->')
+      end
     end
   end
 end
