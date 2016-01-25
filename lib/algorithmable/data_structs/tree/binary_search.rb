@@ -10,8 +10,14 @@ module Algorithmable
           collection.each { |item| put item }
         end
 
-        def height
-          fail NotImplementedError
+        def max_depth
+          max_height_of @root
+        end
+
+        alias_method :height, :max_depth
+
+        def min_depth
+          min_height_of @root
         end
 
         def size
@@ -24,7 +30,6 @@ module Algorithmable
 
         def put(object)
           @root = put_impl @root, object
-          self
         end
 
         def min
@@ -77,27 +82,6 @@ module Algorithmable
           @root = reverse_bang_impl @root
         end
 
-        # def flip!
-        #   queue = new_deque_queue
-        #   current = @root
-        #   until current.left.nil?
-        #     queue.push_back current
-        #     current = current.left
-        #   end
-        #
-        #   root = queue.pop_front
-        #   current = root
-        #   until queue.empty?
-        #     temp = queue.pop_back
-        #     current.left = temp.right
-        #     current.right = temp
-        #     current = temp
-        #   end
-        #
-        #   @root = root
-        #   self
-        # end
-
         def flip!
           @root = flip_bang_imp! @root, 0
         end
@@ -115,7 +99,21 @@ module Algorithmable
           new_head
         end
 
+        def balanced?(diff = 1)
+          (max_depth - min_depth) <= diff
+        end
+
         private
+
+        def max_height_of(node)
+          return 0 unless node
+          1 + [max_height_of(node.left), max_height_of(node.right)].max
+        end
+
+        def min_height_of(node)
+          return 0 unless node
+          1 + [min_height_of(node.left), min_height_of(node.right)].min
+        end
 
         def reverse_bang_impl(root)
           return unless root

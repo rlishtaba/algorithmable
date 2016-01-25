@@ -213,4 +213,24 @@ describe Algorithmable::Cups::Primitives do
       expect(common).to eq({'a' => 3, 'k' => 3, 'f' => 3})
     end
   end
+
+  context 'find shortest path between words in dictionary' do
+    it do
+      dictionary = %w(the quick brown fox quick)
+      hops = runtime.find_distance_between_words dictionary, 'fox', 'the'
+      expect(hops).to eq(3)
+    end
+
+    it do
+      dictionary = %w(the quick brown fox quick)
+      hops = runtime.find_distance_between_words dictionary, 'quick', 'fox'
+      expect(hops).to eq(2)
+    end
+
+    it do
+      dictionary = 'cat -> bat -> bet -> bot -> bog -> dog'.split ' -> '
+      hops = runtime.find_distance_between_words dictionary, 'cat', 'bog'
+      expect(hops).to eq(4)
+    end
+  end
 end

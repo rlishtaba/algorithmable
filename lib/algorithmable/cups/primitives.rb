@@ -264,6 +264,39 @@ module Algorithmable
           {key => value} if value == collection.size
         end
       end
+
+      # /* This class will be given a list of words (such as might be tokenized
+      #  * from a paragraph of text), and will provide a method that takes two
+      #  * words and returns the shortest distance (in words) between those two
+      #  * words in the provided text.
+      #  * Example:
+      #  *   WordDistanceFinder finder = new WordDistanceFinder(Arrays.asList("the", "quick", "brown", "fox", "quick"));
+      #  *   assert(finder.distance("fox","the") == 3);
+      #  *   assert(finder.distance("quick", "fox") == 1);
+      #  * /
+
+      def find_distance_between_words(dictionary, from, to)
+        return 0 if from == to
+
+        dict_size = dictionary.size
+        distance = -1
+
+        dictionary.each_with_index do |word, index|
+          if [from, to].include? word
+            temp = word == from
+            to = temp ? to : from
+            distance += 1
+
+            i = index
+            while i < dict_size - 1 && dictionary[i] != to
+              i += 1
+              distance += 1
+              return distance if dictionary[i] == to
+            end
+          end
+        end
+        distance
+      end
     end
   end
 end
