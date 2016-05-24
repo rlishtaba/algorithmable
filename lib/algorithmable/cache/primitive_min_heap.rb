@@ -1,9 +1,11 @@
 module Algorithmable
   module Cache
     class PrimitiveMinHeap
+      include Algorithmable::Cache::Methods
       extend Forwardable
 
       def_delegators :@index, :size, :empty?
+      def_delegators :@storage, :key?
 
       def initialize(index = [])
         @storage = {}
@@ -19,11 +21,6 @@ module Algorithmable
         @storage[key].tap do |value|
           sink key if value
         end
-      end
-
-      def pop
-        key = @index.delete @index.last
-        @storage.delete key
       end
 
       private

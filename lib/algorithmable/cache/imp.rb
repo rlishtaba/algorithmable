@@ -3,7 +3,7 @@ module Algorithmable
     class Imp
       extend Forwardable
 
-      def_delegators :@heap, :size, :empty?, :[]
+      def_delegators :@heap, :size, :empty?, :[], :key?, :clear
 
       def initialize(max_size, heap)
         @max_size = max_size

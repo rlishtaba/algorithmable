@@ -54,5 +54,20 @@ describe Algorithmable::Cache do
       end
       expect(values).to eq(entries)
     end
+
+    it do
+      cache = factory.new_lru_cache 5
+      cache[:one] = :bar
+      cache[:two] = :foo
+      expect([cache.key?(:one), cache.key?(:two), cache.key?(:baz)]).to eq([true, true, false])
+    end
+
+    it do
+      cache = factory.new_lru_cache 5
+      cache[:one] = :bar
+      cache[:two] = :foo
+      cache.clear
+      expect(cache.size).to eq(0)
+    end
   end
 end
