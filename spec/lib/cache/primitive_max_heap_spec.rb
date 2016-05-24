@@ -37,5 +37,18 @@ describe Algorithmable::Cache::PrimitiveMaxHeap do
       heap.pop
       expect(heap[:one]).to eq(nil)
     end
+
+    it do
+      heap[:one] = :bar
+      heap[:two] = :foo
+      expect([heap.key?(:one), heap.key?(:two), heap.key?(:baz)]).to eq([true, true, false])
+    end
+
+    it do
+      heap[:one] = :bar
+      heap[:two] = :foo
+      heap.clear
+      expect(heap.size).to eq(0)
+    end
   end
 end
