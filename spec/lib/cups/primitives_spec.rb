@@ -172,7 +172,7 @@ describe Algorithmable::Cups::Primitives do
     end
 
     it do
-      db = {index: [], relations: Hash.new { |h, k| h[k] = [] }}
+      db = { index: [], relations: Hash.new { |h, k| h[k] = [] } }
       tokenizer = Tokenizer.new
 
       tokenizer.parse(input) do |id, name, boss, occupation, year|
@@ -210,7 +210,7 @@ describe Algorithmable::Cups::Primitives do
 
     it do
       common = runtime.find_common_chars_in_words words
-      expect(common).to eq({'a' => 3, 'k' => 3, 'f' => 3})
+      expect(common).to eq('a' => 3, 'k' => 3, 'f' => 3)
     end
   end
 

@@ -1,30 +1,23 @@
 module Algorithmable
   module Sort
     class Bubble
+      extend Algorithmable::Sort::Utils
+      #
+      # Time О(N^2), stable and slow
+      # Space О(N)
+      #
       def self.sort(collection)
-        new.sort(collection)
-      end
-
-      def sort(collection)
+        length = collection.length - 1
         loop do
           swapped = false
-          (collection.size.pred).times do |index|
-            if (collection[index] <=> collection[index.next]) == 1
-              collection = swap(index, collection)
+          0.upto(length).each do |i|
+            if 1 == (collection[i] <=> collection[i + 1])
+              swap(collection, i)
               swapped = true
             end
           end
           break unless swapped
         end
-        collection
-      end
-
-      private
-
-      def swap(index, collection)
-        current = collection[index]
-        collection[index] = collection[index.next]
-        collection[index.next] = current
         collection
       end
     end

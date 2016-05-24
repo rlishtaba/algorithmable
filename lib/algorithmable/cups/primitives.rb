@@ -139,15 +139,15 @@ module Algorithmable
       def parse_char(char, state)
         chunk_id = state[:chunk_id]
         case char
-          when /[\(\{\[\)\}\]]/
-            state[:escaping] = char != state[:prev_char]
-            state[:chunks][chunk_id] << char unless state[:escaping]
-          else
-            if state[:escaping]
-              chunk_id = state[:chunk_id] += 1
-              state[:escaping] = false
-            end
-            state[:chunks][chunk_id] << char
+        when /[\(\{\[\)\}\]]/
+          state[:escaping] = char != state[:prev_char]
+          state[:chunks][chunk_id] << char unless state[:escaping]
+        else
+          if state[:escaping]
+            chunk_id = state[:chunk_id] += 1
+            state[:escaping] = false
+          end
+          state[:chunks][chunk_id] << char
         end
         state[:prev_char] = char
       end
@@ -261,7 +261,7 @@ module Algorithmable
         end
 
         map.select do |key, value|
-          {key => value} if value == collection.size
+          { key => value } if value == collection.size
         end
       end
 
@@ -282,17 +282,16 @@ module Algorithmable
         distance = -1
 
         dictionary.each_with_index do |word, index|
-          if [from, to].include? word
-            temp = word == from
-            to = temp ? to : from
-            distance += 1
+          next unless [from, to].include? word
+          temp = word == from
+          to = temp ? to : from
+          distance += 1
 
-            i = index
-            while i < dict_size - 1 && dictionary[i] != to
-              i += 1
-              distance += 1
-              return distance if dictionary[i] == to
-            end
+          i = index
+          while i < dict_size - 1 && dictionary[i] != to
+            i += 1
+            distance += 1
+            return distance if dictionary[i] == to
           end
         end
         distance

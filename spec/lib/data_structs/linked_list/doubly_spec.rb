@@ -195,14 +195,4 @@ describe Algorithmable::DataStructs::LinkedList::Doubly do
       expect(local_list.peek_back).to be_nil
     end
   end
-
-  describe 'when reversing list' do
-    let(:collection) { [1, 2, 3] }
-    let(:list) { described_class.new collection }
-
-    it 'can reverse singly linked list' do
-      pending 'reverse linked list'
-      expect(list.reverse!.peek_front).to eq(3)
-    end
-  end
 end

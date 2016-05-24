@@ -4,7 +4,6 @@ module Algorithmable
       class Binary
         include Enumerable
         include Algorithmable::DataStructs
-
       end
     end
   end

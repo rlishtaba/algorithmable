@@ -10,11 +10,6 @@ module Algorithmable
         @index = index
       end
 
-      def pop
-        key = @index.delete @index.last
-        @storage.delete key
-      end
-
       def []=(key, value)
         swim key
         @storage[key] = value
@@ -25,6 +20,13 @@ module Algorithmable
           swim key if value
         end
       end
+
+      def pop
+        key = @index.delete @index.last
+        @storage.delete key
+      end
+
+      private
 
       def swim(key)
         @index.delete(key)
