@@ -32,7 +32,6 @@ describe Algorithmable::DataStructs::LinkedList::Singly do
       expect(list.include? 1).to eq(true)
     end
 
-
     it do
       expect(list.peek_back).to be_nil
     end
@@ -79,7 +78,6 @@ describe Algorithmable::DataStructs::LinkedList::Singly do
       expect(list.peek_front).to eq(3)
       expect(list.peek_back).to eq(2)
     end
-
 
     # it 'can find merge node in a sorted linked list' do
     #   a_collection = [1, 3, 5, 7, 9]
@@ -182,13 +180,33 @@ describe Algorithmable::DataStructs::LinkedList::Singly do
     end
   end
 
-  describe 'when reversing list' do
+  context 'when reversing list' do
     let(:collection) { [1, 2, 3] }
     let(:list) { described_class.new collection }
 
     it 'can reverse singly linked list' do
-      pending 'reverse linked list'
-      expect(list.reverse.peek_front).to eq(3)
+      expect(list.peek_front).to eq(3)
+      expect(list.peek_back).to eq(1)
+      list.reverse!
+      expect(list.peek_front).to eq(1)
+      expect(list.peek_back).to eq(3)
+    end
+  end
+
+  context 'when merging linked lists' do
+    let(:list1) { described_class.new [1, 3, 5, 7].reverse }
+    let(:list2) { described_class.new [2, 4, 6, 8].reverse }
+
+    it do
+      merged = list1.merge list2
+      expect(merged.to_a).to eq([1, 2, 3, 4, 5, 6, 7, 8])
+    end
+
+    it do
+      l1 = described_class.new [0]
+      l2 = described_class.new [0]
+      merged = l1.merge l2
+      expect(merged.to_a).to eq([0, 0])
     end
   end
 end

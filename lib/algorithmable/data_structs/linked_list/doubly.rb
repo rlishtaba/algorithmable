@@ -3,7 +3,7 @@ module Algorithmable
     module LinkedList
       class Doubly < Base
         class Node
-          attr_accessor :item, :prev, :next
+          attr_accessor :item, :prev, :next, :front
 
           def initialize(item, prev_pointer = nil, next_pointer = nil)
             @item = item

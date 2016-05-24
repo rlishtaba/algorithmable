@@ -3,7 +3,7 @@ Documentation:
 Style/IndentHash:
   Enabled: false
 Metrics/LineLength:
-  Max: 100
+  Max: 130
 AllCops:
   Exclude:
     - doc/**/*
