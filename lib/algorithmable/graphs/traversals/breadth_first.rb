@@ -38,7 +38,7 @@ module Algorithmable
           yield vertex if block_given?
           until queue.empty?
             next_vertex = queue.deq
-            graph.adjacency(next_vertex).each do |neighbour_vertex|
+            graph.adjacency_list(next_vertex).each do |neighbour_vertex|
               next if visited? neighbour_vertex
               @edge_to[neighbour_vertex] = next_vertex
               @visited[neighbour_vertex] = true

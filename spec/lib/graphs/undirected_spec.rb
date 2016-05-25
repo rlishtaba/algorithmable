@@ -32,7 +32,7 @@ describe Algorithmable::Graphs::Undirected do
     it do
       graph.add_edge(1, 0)
       graph.add_edge(1, 3)
-      expect(graph.adjacency(1)).to eq([0, 3])
+      expect(graph.adjacency_list(1)).to eq([0, 3])
     end
   end
 end

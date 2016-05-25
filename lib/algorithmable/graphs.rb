@@ -1,9 +1,9 @@
 module Algorithmable
   module Graphs
+    require 'algorithmable/graphs/directed'
     require 'algorithmable/graphs/edge'
-    autoload :Directed, 'algorithmable/graphs/directed'
-    autoload :Undirected, 'algorithmable/graphs/undirected'
-    autoload :Traversals, 'algorithmable/graphs/traversals'
+    require 'algorithmable/graphs/traversals'
+    require 'algorithmable/graphs/undirected'
 
     class << self
       def new_undirected_graph(vertices = [])
@@ -15,7 +15,7 @@ module Algorithmable
       end
 
       def new_directed_graph(vertices = [])
-        Directed.new(vertices.size).tap do |g|
+        Directed.new.tap do |g|
           vertices.each do |from, to, weight|
             g.add_edge Edge.new(from, to, weight)
           end

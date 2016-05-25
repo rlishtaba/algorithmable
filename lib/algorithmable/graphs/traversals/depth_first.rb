@@ -29,13 +29,13 @@ module Algorithmable
 
         private
 
-        def traverse(graph, vertex)
+        def traverse(graph, vertex, &f)
           @visited[vertex] = true
           yield vertex if block_given?
-          graph.adjacency(vertex).each do |neighbour_vertex|
+          graph.adjacency_list(vertex).each do |neighbour_vertex|
             unless visited? neighbour_vertex
               @edge_to[neighbour_vertex] = vertex
-              traverse graph, neighbour_vertex
+              traverse graph, neighbour_vertex, &f
             end
           end
         end

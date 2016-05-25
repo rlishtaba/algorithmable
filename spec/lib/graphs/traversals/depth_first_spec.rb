@@ -33,4 +33,17 @@ describe Algorithmable::Graphs::Traversals::DepthFirst do
       expect(traversal.path_to(6)).to eq([0, 5, 4, 6])
     end
   end
+
+  context 'additional DFS traversal test' do
+    let(:graph) do
+      Algorithmable::Graphs.new_undirected_graph([[0, 1], [0, 2], [1, 2], [2, 0], [2, 3], [3, 3]])
+    end
+    let(:traversal) {
+      described_class.new(graph, 0)
+    }
+
+    it 'can find path shortest path from 0 to ' do
+      expect(traversal.path_to(3)).to eq([0, 1, 2, 3])
+    end
+  end
 end

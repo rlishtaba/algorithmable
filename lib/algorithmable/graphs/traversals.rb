@@ -1,9 +1,10 @@
 module Algorithmable
   module Graphs
     module Traversals
-      autoload :Errors, 'algorithmable/graphs/traversals/errors'
-      autoload :DepthFirst, 'algorithmable/graphs/traversals/depth_first'
-      autoload :BreadthFirst, 'algorithmable/graphs/traversals/breadth_first'
+      require 'algorithmable/graphs/traversals/errors'
+      require 'algorithmable/graphs/traversals/depth_first'
+      require 'algorithmable/graphs/traversals/breadth_first'
+      require 'algorithmable/graphs/traversals/topological_sort'
 
       def traverse_with_depth_first(graph, source)
         DepthFirst.new(graph, source)
