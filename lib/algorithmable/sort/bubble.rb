@@ -6,12 +6,14 @@ module Algorithmable
       # Time О(N^2), stable and slow
       # Space О(N)
       #
+      # Optimized implementation of Bubble sort
+      #
       def self.sort(collection)
         length = collection.length - 1
         loop do
           swapped = false
           0.upto(length).each do |i|
-            if 1 == (collection[i] <=> collection[i + 1])
+            if 1 == (collection[i] <=> collection[i + 1]) #nil safe comparison
               swap(collection, i)
               swapped = true
             end

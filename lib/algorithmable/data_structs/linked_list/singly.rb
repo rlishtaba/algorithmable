@@ -2,16 +2,6 @@ module Algorithmable
   module DataStructs
     module LinkedList
       class Singly < Base
-        class Node
-          attr_accessor :item, :next, :front
-
-          def initialize(item, next_pointer = nil)
-            @item = item
-            @next = next_pointer
-          end
-        end
-
-        private_constant :Node
 
         def push_front(obj)
           node = new_node(obj)
@@ -182,6 +172,17 @@ module Algorithmable
         def new_node(item, next_pinter = nil)
           Node.new item, next_pinter
         end
+
+        class Node
+          attr_accessor :item, :next, :front
+
+          def initialize(item, next_pointer = nil)
+            @item = item
+            @next = next_pointer
+          end
+        end
+
+        private_constant :Node
       end
     end
   end

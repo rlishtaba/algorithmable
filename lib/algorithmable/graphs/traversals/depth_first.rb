@@ -4,11 +4,11 @@ module Algorithmable
       class DepthFirst
         include Algorithmable::Graphs::Traversals::Errors
 
-        def initialize(graph, source)
+        def initialize(graph, source, &f)
           @visited = []
           @edge_to = []
           @source = source
-          traverse graph, source
+          traverse graph, source, &f
         end
 
         def visited?(vertex)
@@ -20,10 +20,10 @@ module Algorithmable
           path = []
           finish = vertex
           while finish != @source
-            path.push finish
+            path.unshift finish
             finish = @edge_to[finish]
           end
-          path.push @source
+          path.unshift @source
           path
         end
 
@@ -31,6 +31,7 @@ module Algorithmable
 
         def traverse(graph, vertex)
           @visited[vertex] = true
+          yield vertex if block_given?
           graph.adjacency(vertex).each do |neighbour_vertex|
             unless visited? neighbour_vertex
               @edge_to[neighbour_vertex] = vertex
