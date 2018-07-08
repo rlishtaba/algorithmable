@@ -14,6 +14,7 @@ module Algorithmable
   autoload :LevenshteinDistance, 'algorithmable/levenshtein_distance'
   autoload :Cups, 'algorithmable/cups'
   autoload :Cache, 'algorithmable/cache'
+  autoload :Trees, 'algorithmable/trees'
   autoload :UnionFind, 'algorithmable/union_find'
 
   class << self

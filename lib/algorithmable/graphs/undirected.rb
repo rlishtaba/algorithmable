@@ -6,20 +6,20 @@ module Algorithmable
       def initialize(vertices = 0)
         @vertices = vertices
         @edges = 0
-        @adj = []
-        @vertices.times { |i| @adj[i] = [] }
+        @adjacency_list = []
+        @vertices.times { |i| @adjacency_list[i] = [] }
       end
 
       def add_edge(left_vertex, right_vertex)
-        @adj[left_vertex] ||= []
-        @adj[right_vertex] ||= []
-        @adj[left_vertex].push right_vertex
-        @adj[right_vertex].push left_vertex
+        @adjacency_list[left_vertex] ||= []
+        @adjacency_list[right_vertex] ||= []
+        @adjacency_list[left_vertex].push right_vertex
+        @adjacency_list[right_vertex].push left_vertex
         @edges = @edges.next
       end
 
-      def adjacency(vertex)
-        @adj[vertex]
+      def adjacency_list(vertex)
+        @adjacency_list[vertex]
       end
 
       def valid_vertex?(vertex)
@@ -28,14 +28,14 @@ module Algorithmable
 
       def degree(vertex)
         fail "Vertex #{vertex} is not valid." unless valid_vertex?(vertex)
-        adjacency(vertex).size
+        adjacency_list(vertex).size
       end
 
       def to_s
         data = ''
         @vertices.times do |vertex|
           data += "( #{vertex} => "
-          @adj[vertex].each do |neighbor|
+          @adjacency_list[vertex].each do |neighbor|
             data += "#{neighbor} "
           end
           data += ') '

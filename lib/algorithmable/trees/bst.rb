@@ -1,5 +1,5 @@
 module Algorithmable
-  module Searches
+  module Trees
     class BinarySearchTree
       def initialize(key_type, value_type)
         @key_type = key_type

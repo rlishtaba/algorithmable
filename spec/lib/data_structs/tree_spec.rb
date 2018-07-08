@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Algorithmable::DataStructs::Tree do
   include Algorithmable::DataStructs::Tree
-  let(:tree) { new_ordered_binary_tree }
+  let(:trees) { new_ordered_binary_tree }
 
   context '#when sorting a binary tree' do
     it 'can sort collection in O(n) operations' do

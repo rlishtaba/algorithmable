@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Algorithmable::Searches::BinarySearchTree do
+describe Algorithmable::Trees::BinarySearchTree do
   let(:input) { %w(n y e c a q p b k t s v w f z j g r u m o i h l x).freeze }
   let(:tree) do
     new_tree = described_class.new(String, Numeric)
